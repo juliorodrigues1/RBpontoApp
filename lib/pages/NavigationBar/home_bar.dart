@@ -50,6 +50,12 @@ class _HomeBar extends State<HomeBar> {
     });
   }
 
+  void _getEmotion(int id) {
+    setState(() {
+      employ_global.emoticons = id;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
@@ -72,12 +78,10 @@ class _HomeBar extends State<HomeBar> {
                 style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 40),
-                ),
                 FloatingActionButton(
-                  // onPressed: () => getEmotion(1),
+                  onPressed: () => _getEmotion(1),
                   heroTag: 'button1',
                   backgroundColor: Colors.green,
                   splashColor: Colors.white,
@@ -88,7 +92,7 @@ class _HomeBar extends State<HomeBar> {
                   padding: EdgeInsets.only(left: 20),
                 ),
                 FloatingActionButton(
-                  // onPressed: () => getEmotion(2),
+                  onPressed: () => _getEmotion(2),
                   heroTag: 'button2',
                   backgroundColor: Colors.blue,
                   splashColor: Colors.white,
@@ -99,7 +103,7 @@ class _HomeBar extends State<HomeBar> {
                   padding: EdgeInsets.only(left: 20),
                 ),
                 FloatingActionButton(
-                  // onPressed: () => getEmotion(3),
+                  onPressed: () => _getEmotion(3),
                   heroTag: 'button3',
                   backgroundColor: Colors.red[900],
                   splashColor: Colors.white,
@@ -110,12 +114,12 @@ class _HomeBar extends State<HomeBar> {
                   padding: EdgeInsets.only(left: 20),
                 ),
                 FloatingActionButton(
-                  // onPressed: () => getEmotion(4),
+                  onPressed: () => _getEmotion(4),
                   heroTag: 'button4',
                   backgroundColor: Colors.black,
                   splashColor: Colors.white,
                   child: Image.asset('assets/icons/triste.png',
-                      width: 50, height: 50),
+                      width: 55, height: 50),
                 ),
                 SizedBox(height: 20),
               ],

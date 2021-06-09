@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+import 'package:Ponto_App/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:Ponto_App/model/employ.dart' as employ_global;
+import 'package:Ponto_App/global/variables.dart' as variables_global;
 import 'package:http/http.dart' as http;
 
 class PointBar extends StatefulWidget {
@@ -43,9 +45,19 @@ class _PointBar extends State<PointBar> {
       getCurrentLocation();
       super.initState();
     }
+    if (employ_global.emoticons != 0)
+      getImage();
+    else
+      showMenssage;
   }
 
   Future getImage() async {
+    if (employ_global.emoticons == 0) {
+      return showAlertDialog1(context);
+    }
+    setState(() {
+      _isInAsyncCall = true;
+    });
     final image = await imagePicker.getImage(
         source: ImageSource.camera, maxWidth: 480, maxHeight: 640);
     if (this.mounted) {
@@ -64,8 +76,10 @@ class _PointBar extends State<PointBar> {
       'employ_id': employ_global.employ_id,
       'latitude': latitudeData,
       'longitude': longitudeData,
-      'image_photo': base64Encode(imageBytes)
+      'image_photo': base64Encode(imageBytes),
+      'mood_day': emoticons.toString(),
     });
+
     if (response.statusCode == 200) {
       log(response.body);
       setState(() {
@@ -192,13 +206,49 @@ class _PointBar extends State<PointBar> {
     );
   }
 
+  Widget showMenssage(BuildContext context) {
+    Widget okButton = FlatButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pop('dialog');
+          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Home(employID: employ_global.employ_id)));
+        });
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Não é possível continuar."),
+      content: Text("Você precisa selecionar seu humor do dia."),
+      actions: [
+        okButton,
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+  }
+
   showAlertDialog1(BuildContext context) {
     // configura o button
     // ignore: deprecated_member_use
     Widget okButton = FlatButton(
         child: Text("OK"),
-        onPressed: () =>
-            Navigator.of(context, rootNavigator: true).pop('dialog'));
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pop('dialog');
+          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Home(employID: employ_global.employ_id)));
+        });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Não é possível continuar."),
@@ -221,8 +271,15 @@ class _PointBar extends State<PointBar> {
     // ignore: deprecated_member_use
     Widget okButton = FlatButton(
         child: Text("OK"),
-        onPressed: () =>
-            Navigator.of(context, rootNavigator: true).pop('dialog'));
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pop('dialog');
+          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Home(employID: employ_global.employ_id)));
+        });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Sucesso"),
@@ -245,8 +302,15 @@ class _PointBar extends State<PointBar> {
     // ignore: deprecated_member_use
     Widget okButton = FlatButton(
         child: Text("OK"),
-        onPressed: () =>
-            Navigator.of(context, rootNavigator: true).pop('dialog'));
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pop('dialog');
+          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Home(employID: employ_global.employ_id)));
+        });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Error"),
