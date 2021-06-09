@@ -1,14 +1,8 @@
-import 'package:Ponto_App/main.dart';
-import 'package:Ponto_App/pages/login.dart';
-import 'package:Ponto_App/viewmodels/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Ponto_App/SplashScreen/style.dart' as Theme;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
-
-import 'package:provider/provider.dart';
-
 
 class Splash extends StatefulWidget {
   @override
@@ -16,14 +10,13 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     Timer(Duration(seconds: 5), () {
-      // Navigator.of(context).push(MaterialPageRoute(builder: (context) =>
+      Navigator.pop(context);
       Navigator.pushNamed(context, '/login');
     });
   }
@@ -60,18 +53,9 @@ class _SplashState extends State<Splash> {
         },
         child: SingleChildScrollView(
           child: Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
-            height: MediaQuery
-                .of(context)
-                .size
-                .height >= 775.0
-                ? MediaQuery
-                .of(context)
-                .size
-                .height
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height >= 775.0
+                ? MediaQuery.of(context).size.height
                 : 775.0,
             decoration: new BoxDecoration(
               gradient: new LinearGradient(
@@ -89,13 +73,7 @@ class _SplashState extends State<Splash> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 90.0),
-                  // child: new Image(
-                  //     width: 25.0,
-                  //     height: 19.0,
-                  //     fit: BoxFit.fill,
-                  //     image: new AssetImage("assets/icons/iconePonto.png")),
                 ),
-                // ),
                 Column(
                   children: <Widget>[
                     SizedBox(

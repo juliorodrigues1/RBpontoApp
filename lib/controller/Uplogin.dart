@@ -40,6 +40,7 @@ class Uplogin {
         User user = User(user: this._login, password: this._password);
         _saveUserMemory(user);
       }
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(
