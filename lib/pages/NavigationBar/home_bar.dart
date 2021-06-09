@@ -1,4 +1,12 @@
+import 'dart:convert';
+
+import 'package:Ponto_App/model/workDay.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:Ponto_App/global/variables.dart' as variables_global;
+import 'package:Ponto_App/model/employ.dart' as employ_global;
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class HomeBar extends StatefulWidget {
   @override
@@ -6,6 +14,42 @@ class HomeBar extends StatefulWidget {
 }
 
 class _HomeBar extends State<HomeBar> {
+  WorkDay workDay;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    setState(() {
+      variables_global.isInAsyncCall = false;
+      _getWorkDay();
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  Future<Map> listWorkDay() async {
+    var url = Uri.http("172.16.4.125:8080", "/api/employ/workday");
+    var response = await http.post(url, body: {
+      'employ_id': employ_global.employ_id,
+    });
+    Map<String, dynamic> mapWorkDay = json.decode(response.body);
+    return mapWorkDay;
+  }
+
+  void _getWorkDay() async {
+    Map mapWorkDay = await listWorkDay();
+    WorkDay workDayConvert = WorkDay.fromJson(mapWorkDay);
+    setState(() {
+      this.workDay = workDayConvert;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
@@ -79,54 +123,134 @@ class _HomeBar extends State<HomeBar> {
             SizedBox(height: 20),
             Text('Ultimos Registros',
                 style: TextStyle(fontWeight: FontWeight.bold)),
-
+            Container(
+              child: _itemBuilder(context, 1),
+            ),
             //primeira entrada
-            Card(
-              child: Row(
-                children: [
-                  Image.asset('assets/icons/Ellipse 1.png',
-                      width: 50, height: 50),
-                  Text('Entrada: 05/17/21 09:21:18',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            //PRIMEIRA SAÍDA
-            Card(
-              child: Row(
-                children: [
-                  Image.asset('assets/icons/Ellipse 1 (1).png',
-                      width: 50, height: 50),
-                  Text('Saída: 05/17/21 09:21:18',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            //SEGUNDA ENTRADA
-            Card(
-              child: Row(
-                children: [
-                  Image.asset('assets/icons/Ellipse 1.png',
-                      width: 50, height: 50),
-                  Text('Entrada: 05/17/21 09:21:18',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            //SEGUNDA SAÍDA
-            Card(
-              child: Row(
-                children: [
-                  Image.asset('assets/icons/Ellipse 1 (1).png',
-                      width: 50, height: 50),
-                  Text('Saída: 05/17/21 09:21:18',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
+            // Card(
+            //   child: Row(
+            //     children: [
+            //       Image.asset('assets/icons/Ellipse 1.png',
+            //           width: 50, height: 50),
+            //       Text('Entrada: 05/17/21 09:21:18',
+            //           style: TextStyle(fontWeight: FontWeight.bold)),
+            //     ],
+            //   ),
+            // ),
+            // //PRIMEIRA SAÍDA
+            // Card(
+            //   child: Row(
+            //     children: [
+            //       Image.asset('assets/icons/Ellipse 1 (1).png',
+            //           width: 50, height: 50),
+            //       Text('Saída: 05/17/21 09:21:18',
+            //           style: TextStyle(fontWeight: FontWeight.bold)),
+            //     ],
+            //   ),
+            // ),
+            // //SEGUNDA ENTRADA
+            // Card(
+            //   child: Row(
+            //     children: [
+            //       Image.asset('assets/icons/Ellipse 1.png',
+            //           width: 50, height: 50),
+            //       Text('Entrada: 05/17/21 09:21:18',
+            //           style: TextStyle(fontWeight: FontWeight.bold)),
+            //     ],
+            //   ),
+            // ),
+            // //SEGUNDA SAÍDA
+            // Card(
+            //   child: Row(
+            //     children: [
+            //       Image.asset('assets/icons/Ellipse 1 (1).png',
+            //           width: 50, height: 50),
+            //       Text('Saída: 05/17/21 09:21:18',
+            //           style: TextStyle(fontWeight: FontWeight.bold)),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),
     );
+  }
+
+  Widget _itemBuilder(BuildContext context, int index) {
+    var inputFormat = DateFormat('dd/MM/yyyy HH:mm');
+    return this.workDay != null
+        ? Column(
+            children: [
+              //entry
+              Card(
+                child: Row(
+                  children: [
+                    Image.asset('assets/icons/Ellipse 1.png',
+                        width: 50, height: 50),
+                    Text(this.workDay.entryDay != null
+                        ? 'Entrada: ' +
+                            inputFormat
+                                .format(DateTime.parse(this.workDay.entryDay))
+                        : 'Não a registro')
+                  ],
+                ),
+              ),
+              //output
+              Card(
+                child: Row(
+                  children: [
+                    Image.asset('assets/icons/Ellipse 1 (1).png',
+                        width: 50, height: 50),
+                    Text(this.workDay.dayOut != null
+                        ? 'Saída: ' +
+                            inputFormat
+                                .format(DateTime.parse(this.workDay.dayOut))
+                        : 'Não a registro')
+                  ],
+                ),
+              ),
+              //entry
+              Card(
+                child: Row(
+                  children: [
+                    Image.asset('assets/icons/Ellipse 1.png',
+                        width: 50, height: 50),
+                    Text(this.workDay.entryBack != null
+                        ? 'Entrada: ' +
+                            inputFormat
+                                .format(DateTime.parse(this.workDay.entryBack))
+                        : 'Não a registro')
+                  ],
+                ),
+              ),
+              //output
+              Card(
+                child: Row(
+                  children: [
+                    Image.asset('assets/icons/Ellipse 1 (1).png',
+                        width: 50, height: 50),
+                    Text(this.workDay.outOfTheDay != null
+                        ? 'Saída: ' +
+                            inputFormat.format(
+                                DateTime.parse(this.workDay.outOfTheDay))
+                        : 'Não a registro')
+                  ],
+                ),
+              ),
+            ],
+          )
+        : Column(
+            children: [
+              Card(
+                child: Row(
+                  children: [
+                    Image.asset('assets/icons/Ellipse 1.png',
+                        width: 50, height: 50),
+                    Text('Buscando registro, ou não existem registros.')
+                  ],
+                ),
+              ),
+            ],
+          );
   }
 }

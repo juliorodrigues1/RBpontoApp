@@ -15,6 +15,7 @@ import 'package:flutter/services.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:provider/provider.dart';
 import 'package:Ponto_App/model/employ.dart' as employ_global;
+import 'package:Ponto_App/global/variables.dart' as variables_global;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -26,8 +27,6 @@ class _Login extends State<Login> {
   String login = '';
   String senha = '';
   String error = '';
-
-  bool _isInAsyncCall = false;
 
   TextEditingController loginInputController = TextEditingController();
   TextEditingController senhaInputController = TextEditingController();
@@ -52,7 +51,6 @@ class _Login extends State<Login> {
   Future<User> _getSavedUserMemory() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String jsonUser = prefs.getString(PreferencesKeys.activeUser);
-    print(jsonUser);
 
     Map<String, dynamic> mapUser = json.decode(jsonUser);
     User user = User.fromJson(mapUser);
@@ -60,6 +58,9 @@ class _Login extends State<Login> {
   }
 
   up() {
+    setState(() {
+      variables_global.isInAsyncCall = true;
+    });
     Uplogin logar = new Uplogin();
     logar.login = employ_global.user;
     logar.password = employ_global.password;
@@ -76,7 +77,7 @@ class _Login extends State<Login> {
           padding: const EdgeInsets.all(0),
           child: buildFormLogin(context),
         ),
-        inAsyncCall: _isInAsyncCall,
+        inAsyncCall: variables_global.isInAsyncCall,
         // demo of some additional parameters
         opacity: 0.7,
         progressIndicator: SizedBox(
@@ -181,12 +182,11 @@ class _Login extends State<Login> {
                 SizedBox(
                   height: 10.0,
                 ),
-                FlatButton(
-                    onPressed: up,
-                    child: ButtonWidget(
-                      title: 'Entrar',
-                      hasBorder: false,
-                    ))
+                FloatingActionButton.extended(
+                  onPressed: up,
+                  backgroundColor: Global.mediumBlue,
+                  label: Text('Entrar'),
+                )
                 // ButtonWidget(
                 //   title: 'Entrar',
                 //   hasBorder: false,
