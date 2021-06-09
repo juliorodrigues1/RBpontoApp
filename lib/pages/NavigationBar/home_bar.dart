@@ -1,0 +1,132 @@
+import 'package:flutter/material.dart';
+
+class HomeBar extends StatefulWidget {
+  @override
+  _HomeBar createState() => _HomeBar();
+}
+
+class _HomeBar extends State<HomeBar> {
+  @override
+  Widget build(BuildContext context) {
+    return NestedScrollView(
+      headerSliverBuilder: (context, condition) {
+        return <Widget>[
+          SliverAppBar(
+            expandedHeight: 200,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: false,
+              background: Image.asset("assets/branca.png"),
+            ),
+          )
+        ];
+      },
+      body: Container(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Text('Humor Neste Memento',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 40),
+                ),
+                FloatingActionButton(
+                  // onPressed: () => getEmotion(1),
+                  heroTag: 'button1',
+                  backgroundColor: Colors.green,
+                  splashColor: Colors.white,
+                  child: Image.asset("assets/icons/feliz.png",
+                      width: 60, height: 50),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                ),
+                FloatingActionButton(
+                  // onPressed: () => getEmotion(2),
+                  heroTag: 'button2',
+                  backgroundColor: Colors.blue,
+                  splashColor: Colors.white,
+                  child: Image.asset('assets/icons/neutro.png',
+                      width: 50, height: 50),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                ),
+                FloatingActionButton(
+                  // onPressed: () => getEmotion(3),
+                  heroTag: 'button3',
+                  backgroundColor: Colors.red[900],
+                  splashColor: Colors.white,
+                  child: Image.asset('assets/icons/raiva.png',
+                      width: 55, height: 50),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                ),
+                FloatingActionButton(
+                  // onPressed: () => getEmotion(4),
+                  heroTag: 'button4',
+                  backgroundColor: Colors.black,
+                  splashColor: Colors.white,
+                  child: Image.asset('assets/icons/triste.png',
+                      width: 50, height: 50),
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
+            SizedBox(height: 20),
+            Text('Ultimos Registros',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+
+            //primeira entrada
+            Card(
+              child: Row(
+                children: [
+                  Image.asset('assets/icons/Ellipse 1.png',
+                      width: 50, height: 50),
+                  Text('Entrada: 05/17/21 09:21:18',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+            //PRIMEIRA SAÍDA
+            Card(
+              child: Row(
+                children: [
+                  Image.asset('assets/icons/Ellipse 1 (1).png',
+                      width: 50, height: 50),
+                  Text('Saída: 05/17/21 09:21:18',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+            //SEGUNDA ENTRADA
+            Card(
+              child: Row(
+                children: [
+                  Image.asset('assets/icons/Ellipse 1.png',
+                      width: 50, height: 50),
+                  Text('Entrada: 05/17/21 09:21:18',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+            //SEGUNDA SAÍDA
+            Card(
+              child: Row(
+                children: [
+                  Image.asset('assets/icons/Ellipse 1 (1).png',
+                      width: 50, height: 50),
+                  Text('Saída: 05/17/21 09:21:18',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
