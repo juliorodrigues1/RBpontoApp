@@ -19,7 +19,6 @@ class _Home extends State<Home> {
   int _indexNavigation = 0;
   int emoticons = 0;
 
-
   //
   getEmotion(emoticons) async {
     setState(() {

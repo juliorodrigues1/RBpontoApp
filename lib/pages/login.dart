@@ -46,6 +46,7 @@ class _Login extends State<Login> {
 
     employ_global.user = user.user;
     employ_global.password = user.password;
+    variables_global.context = this.context;
   }
 
   Future<User> _getSavedUserMemory() async {
