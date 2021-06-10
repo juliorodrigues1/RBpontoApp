@@ -74,7 +74,7 @@ class _HomeBar extends State<HomeBar> {
         child: Column(
           children: [
             SizedBox(height: 20),
-            Text('Humor Neste Memento',
+            Text('Humor Neste Momento',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             Row(
@@ -130,50 +130,6 @@ class _HomeBar extends State<HomeBar> {
             Container(
               child: _itemBuilder(context, 1),
             ),
-            //primeira entrada
-            // Card(
-            //   child: Row(
-            //     children: [
-            //       Image.asset('assets/icons/Ellipse 1.png',
-            //           width: 50, height: 50),
-            //       Text('Entrada: 05/17/21 09:21:18',
-            //           style: TextStyle(fontWeight: FontWeight.bold)),
-            //     ],
-            //   ),
-            // ),
-            // //PRIMEIRA SAÍDA
-            // Card(
-            //   child: Row(
-            //     children: [
-            //       Image.asset('assets/icons/Ellipse 1 (1).png',
-            //           width: 50, height: 50),
-            //       Text('Saída: 05/17/21 09:21:18',
-            //           style: TextStyle(fontWeight: FontWeight.bold)),
-            //     ],
-            //   ),
-            // ),
-            // //SEGUNDA ENTRADA
-            // Card(
-            //   child: Row(
-            //     children: [
-            //       Image.asset('assets/icons/Ellipse 1.png',
-            //           width: 50, height: 50),
-            //       Text('Entrada: 05/17/21 09:21:18',
-            //           style: TextStyle(fontWeight: FontWeight.bold)),
-            //     ],
-            //   ),
-            // ),
-            // //SEGUNDA SAÍDA
-            // Card(
-            //   child: Row(
-            //     children: [
-            //       Image.asset('assets/icons/Ellipse 1 (1).png',
-            //           width: 50, height: 50),
-            //       Text('Saída: 05/17/21 09:21:18',
-            //           style: TextStyle(fontWeight: FontWeight.bold)),
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       ),
