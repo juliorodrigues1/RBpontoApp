@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:Ponto_App/pages/home.dart';
+import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -67,7 +68,7 @@ class _PointBar extends State<PointBar> {
       });
     }
 
-    var url = Uri.http("172.16.4.125:8080", "/api/validation/workload");
+    var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
     List<int> imageBytes = uploadimage.readAsBytesSync();
 
     await this.getCurrentLocation();
