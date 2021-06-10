@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:Ponto_App/model/workDay.dart';
+import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Ponto_App/global/variables.dart' as variables_global;
@@ -34,7 +35,7 @@ class _HomeBar extends State<HomeBar> {
   }
 
   Future<Map> listWorkDay() async {
-    var url = Uri.http("172.16.4.125:8080", "/api/employ/workday");
+    var url = Uri.http(PreferencesKeys.apiURL, "/api/employ/workday");
     var response = await http.post(url, body: {
       'employ_id': employ_global.employ_id,
     });
