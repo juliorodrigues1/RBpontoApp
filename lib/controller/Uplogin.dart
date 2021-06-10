@@ -30,7 +30,7 @@ class Uplogin {
 
   Future Login(_login, _password, context) async {
     try {
-      var url = Uri.http('172.16.4.125:8000', '/api/login');
+      var url = Uri.http(PreferencesKeys.apiURL, '/api/login');
       var response = await http
           .post(url, body: {'email': this._login, 'password': this._password});
       print(jsonDecode(response.body));
