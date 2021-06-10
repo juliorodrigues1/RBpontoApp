@@ -29,13 +29,20 @@ class Uplogin {
   }
 
   Future Login(_login, _password, context) async {
-    var url = Uri.http(PreferencesKeys.apiURL, '/api/login');
-    var response = await http
-        .post(url, body: {'email': this._login, 'password': this._password});
     try {
+      var url = Uri.http('172.16.4.125:8000', '/api/login');
+      var response = await http
+          .post(url, body: {'email': this._login, 'password': this._password});
+      print(jsonDecode(response.body));
+      if (jsonDecode(response.body) ==
+          'Usuário/Email e senha estão incorretos.') {
+        return false;
+      }
+
       String employId = jsonDecode(response.body)['user']['people']
               ['people_employ']['employ_id']
           .toString();
+
       if (employId != null) {
         User user = User(user: this._login, password: this._password);
         _saveUserMemory(user);

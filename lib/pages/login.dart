@@ -58,14 +58,20 @@ class _Login extends State<Login> {
     return user;
   }
 
-  up() {
+  up() async {
     setState(() {
       variables_global.isInAsyncCall = true;
     });
     Uplogin logar = new Uplogin();
     logar.login = employ_global.user;
     logar.password = employ_global.password;
-    logar.Login(logar.password, logar.login, this.context);
+    var error = await logar.Login(logar.password, logar.login, this.context);
+    if (error == false) {
+      setState(() {
+        variables_global.isInAsyncCall = false;
+      });
+      showMenssage(context);
+    }
   }
 
   @override
@@ -199,4 +205,27 @@ class _Login extends State<Login> {
       ),
     );
   }
+}
+
+Widget showMenssage(BuildContext context) {
+  Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop('dialog');
+      });
+  // configura o  AlertDialog
+  AlertDialog alerta = AlertDialog(
+    title: Text("Falha de Login."),
+    content: Text("Usuário ou senha estão incorretos."),
+    actions: [
+      okButton,
+    ],
+  );
+  // exibe o dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alerta;
+    },
+  );
 }
