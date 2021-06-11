@@ -78,7 +78,7 @@ class _PointBar extends State<PointBar> {
       'latitude': latitudeData,
       'longitude': longitudeData,
       'image_photo': base64Encode(imageBytes),
-      'mood_day': emoticons.toString(),
+      'mood_day': employ_global.emoticons.toString(),
     });
 
     if (response.statusCode == 200) {

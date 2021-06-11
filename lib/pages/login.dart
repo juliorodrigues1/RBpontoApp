@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:Ponto_App/TextField/textfield_widget.dart';
-import 'package:Ponto_App/button/button_widget.dart';
 import 'package:Ponto_App/controller/Uplogin.dart';
 import 'package:Ponto_App/model/user.dart';
 import 'package:Ponto_App/ui/shared/globals.dart';
