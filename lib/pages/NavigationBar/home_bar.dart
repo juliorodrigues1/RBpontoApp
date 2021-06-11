@@ -126,7 +126,7 @@ class _HomeBar extends State<HomeBar> {
               ],
             ),
             SizedBox(height: 20),
-            Text('Ultimos Registros',
+            Text('Registro do Dia',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             Container(
               child: _itemBuilder(context, 1),

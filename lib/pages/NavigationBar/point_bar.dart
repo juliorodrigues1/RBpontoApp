@@ -133,7 +133,7 @@ class _PointBar extends State<PointBar> {
         children: [
           Container(
             padding: EdgeInsets.only(
-              top: 100,
+              top: 80,
             ),
             child: _image == null
                 ? Center(
@@ -149,7 +149,7 @@ class _PointBar extends State<PointBar> {
                 : Image.file(
                     _image,
                     width: 350,
-                    height: 350,
+                    height: 250,
                   ),
           ),
           SizedBox(height: 20),
