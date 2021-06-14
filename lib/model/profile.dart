@@ -1,31 +1,44 @@
-class Profile {
-  int id;
-  int employId;
-  String people_employ;
-  String people;
+class ProfileModel {
+  String name;
+  String organ;
+  String lotationCode;
+  String lotataionDescription;
+  String officeName;
+  String bondName;
+  String registrationNumber;
+  String image;
 
-  Profile({
-    this.id,
-    this.employId,
-    this.people_employ,
-    this.people,
+  ProfileModel(
+      {this.name,
+        this.organ,
+        this.lotationCode,
+        this.lotataionDescription,
+        this.officeName,
+        this.bondName,
+        this.registrationNumber,
+        this.image});
 
-
-  });
-  Profile.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    employId = json['employ_id'];
-    people = json['people'];
-    people_employ = json['people_employ'];
+  ProfileModel.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    organ = json['organ'];
+    lotationCode = json['lotation_code'];
+    lotataionDescription = json['lotataion_description'];
+    officeName = json['office_name'];
+    bondName = json['bond_name'];
+    registrationNumber = json['registration_number'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['employ_id'] = this.employId;
-    data['people_employ'] = this.people_employ;
-    data['people'] = this.people;
+    data['name'] = this.name;
+    data['organ'] = this.organ;
+    data['lotation_code'] = this.lotationCode;
+    data['lotataion_description'] = this.lotataionDescription;
+    data['office_name'] = this.officeName;
+    data['bond_name'] = this.bondName;
+    data['registration_number'] = this.registrationNumber;
+    data['image'] = this.image;
     return data;
   }
-
 }
