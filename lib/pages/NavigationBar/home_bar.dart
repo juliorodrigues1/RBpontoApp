@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:Ponto_App/model/workDay.dart';
 import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
