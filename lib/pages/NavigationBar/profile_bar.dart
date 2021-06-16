@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:Ponto_App/model/profile.dart';
+import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:Ponto_App/model/employ.dart' as employ_global;
-
+import 'package:Ponto_App/global/variables.dart' as variables_global;
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -15,7 +16,7 @@ class _ProfileState extends State<Profile> {
   ProfileModel profileModel;
   Future fetchPost() async {
     var url =
-    Uri.http('ponto.riobranco.ac.gov.br', '/api/employ/infomation');
+    Uri.http(PreferencesKeys.apiURL, '/api/employ/infomation');
     var response = await http.post(url, body: {
       'employ_id': employ_global.employ_id,
     });
