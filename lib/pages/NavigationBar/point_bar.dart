@@ -21,18 +21,13 @@ class PointBar extends StatefulWidget {
 class _PointBar extends State<PointBar> {
   File _image;
   File uploadimage;
-
   String employ_id = '';
   String error_message = '';
   String latitudeData = "";
   String longitudeData = "";
-
   final imagePicker = ImagePicker();
-
   var status;
-
   int emoticons;
-
   bool _isInAsyncCall = false;
 
   @override
@@ -69,10 +64,9 @@ class _PointBar extends State<PointBar> {
     }
 
     var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
+
     List<int> imageBytes = uploadimage.readAsBytesSync();
-
     await this.getCurrentLocation();
-
     var response = await http.post(url, body: {
       'employ_id': employ_global.employ_id,
       'latitude': latitudeData,
@@ -222,7 +216,7 @@ class _PointBar extends State<PointBar> {
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Não é possível continuar."),
-      content: Text("Você precisa selecionar seu humor do dia."),
+      content: Text("v"),
       actions: [
         okButton,
       ],
@@ -253,7 +247,7 @@ class _PointBar extends State<PointBar> {
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Não é possível continuar."),
-      content: Text("Você precisa selecionar seu humor do dia."),
+      content: Text("Você precisa selecionar seu humor deste momento."),
       actions: [
         okButton,
       ],
@@ -284,7 +278,7 @@ class _PointBar extends State<PointBar> {
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Sucesso"),
-      content: Text("Seu, ponto foi batido com sucesso"),
+      content: Text("Seu ponto foi registrado com sucesso"),
       actions: [
         okButton,
       ],
