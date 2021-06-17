@@ -5,7 +5,7 @@ import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:Ponto_App/model/employ.dart' as employ_global;
-import 'package:Ponto_App/global/variables.dart' as variables_global;
+
 
 class Profile extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  StreamController _postsController;
+
   ProfileModel profileModel;
 
   Future fetchPost() async {
@@ -26,7 +26,7 @@ class _ProfileState extends State<Profile> {
     return mapProfile;
   }
 
-  void getinfo() async {
+  void  getinfo() async {
     Map mapProfile = await fetchPost();
     setState(() {
       this.profileModel = ProfileModel.fromJson(mapProfile);
