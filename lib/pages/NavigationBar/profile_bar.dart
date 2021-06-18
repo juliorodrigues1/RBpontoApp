@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:Ponto_App/model/profile.dart';
-import 'package:Ponto_App/ui/shared/globals.dart';
 import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:Ponto_App/model/employ.dart' as employ_global;
-import 'package:Ponto_App/global/variables.dart' as variables_global;
+
 
 class Profile extends StatefulWidget {
   @override
@@ -14,7 +13,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  StreamController _postsController;
+
   ProfileModel profileModel;
 
   Future fetchPost() async {
@@ -34,9 +33,7 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  teste() async {
 
-}
   void initState() {
     getinfo();
     super.initState();
@@ -113,12 +110,7 @@ class _ProfileState extends State<Profile> {
           Card(
             child: _listProfile(context, 1),
           ),
-          SizedBox(height: 20),
-          FloatingActionButton.extended(
-            onPressed: teste,
-            backgroundColor: Global.mediumBlue,
-            label: Text('Editar Imagen de Perfil'),
-          )
+
         ],
       );
 
