@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:Ponto_App/TextField/textfield_widget.dart';
 import 'package:Ponto_App/controller/Uplogin.dart';
 import 'package:Ponto_App/model/user.dart';
@@ -120,7 +119,6 @@ class _Login extends State<Login> {
     // final model = Navigator.push(context, MaterialPageRoute(builder: (context) => LoginModel()));
     final size = MediaQuery.of(context).size;
     final bool keyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
-    var senha2 = senha;
     return Scaffold(
       backgroundColor: Global.white,
       body: Stack(

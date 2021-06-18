@@ -5,7 +5,7 @@ import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:Ponto_App/model/employ.dart' as employ_global;
-import 'package:Ponto_App/global/variables.dart' as variables_global;
+
 
 class Profile extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  StreamController _postsController;
+
   ProfileModel profileModel;
 
   Future fetchPost() async {
@@ -33,13 +33,14 @@ class _ProfileState extends State<Profile> {
     });
   }
 
+
   void initState() {
     getinfo();
     super.initState();
   }
   Widget _cabProfile(BuildContext context, int index){
     return Container(
-      height: 100,
+      height: 150,
       color: Colors.blue,
       child: Center(
         child: ClipRRect(
@@ -67,40 +68,33 @@ class _ProfileState extends State<Profile> {
           ),
         ),
         SizedBox(height: 10),
-        Card(
-          child: Text(
-            'LOTAÇÃO: \n \n' +
-                this.profileModel.lotationCode +
-                this.profileModel.lotataionDescription,
-            style: TextStyle(),
-          ),
-        ),
+
         SizedBox(height: 20),
         Card(
           child: Text(
             'SECRETARIA: \n \n  ' + this.profileModel.organ,
-            style: TextStyle(),
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         SizedBox(height: 20),
         Card(
           child: Text(
             'N° MATRICULA: \n \n  ' + this.profileModel.registrationNumber,
-            style: TextStyle(),
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         SizedBox(height: 20),
         Card(
           child: Text(
             'CARGO: \n \n  ' + this.profileModel.officeName,
-            style: TextStyle(),
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         SizedBox(height: 20),
         Card(
           child: Text(
             'VÍNCULO: \n \n  ' + this.profileModel.bondName,
-            style: TextStyle(),
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
       ],
@@ -108,20 +102,17 @@ class _ProfileState extends State<Profile> {
   }
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder: (context, condition) {
-        return <Widget>[
-          SliverAppBar(),
-        ];
-      },
-      body: Column(
+    return ListView(
         children: <Widget>[
           Container(
             child: _cabProfile(context,1),
           ),
-          Card( child: _listProfile(context, 1),)
+          Card(
+            child: _listProfile(context, 1),
+          ),
+
         ],
-      ),
-    );
+      );
+
   }
 }

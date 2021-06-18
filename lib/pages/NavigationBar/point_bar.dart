@@ -8,11 +8,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:Ponto_App/model/employ.dart' as employ_global;
-import 'package:Ponto_App/global/variables.dart' as variables_global;
 import 'package:http/http.dart' as http;
 
 class PointBar extends StatefulWidget {
-  // PointBar({this.employ_id, this.emoticons});
 
   @override
   _PointBar createState() => _PointBar();
@@ -216,7 +214,7 @@ class _PointBar extends State<PointBar> {
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Não é possível continuar."),
-      content: Text("v"),
+      content: Text("Por favor entre em contato com suporte !"),
       actions: [
         okButton,
       ],
