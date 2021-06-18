@@ -26,7 +26,7 @@ class _ProfileState extends State<Profile> {
     return mapProfile;
   }
 
-  void getinfo() async {
+  void  getinfo() async {
     Map mapProfile = await fetchPost();
     setState(() {
       this.profileModel = ProfileModel.fromJson(mapProfile);
