@@ -151,7 +151,7 @@ class _HomeBar extends State<HomeBar> {
                         ? 'Entrada: ' +
                             inputFormat
                                 .format(DateTime.parse(this.workDay.entryDay))
-                        : 'Não a registro')
+                        : 'Não há registro')
                   ],
                 ),
               ),
@@ -165,7 +165,7 @@ class _HomeBar extends State<HomeBar> {
                         ? 'Saída: ' +
                             inputFormat
                                 .format(DateTime.parse(this.workDay.dayOut))
-                        : 'Não a registro')
+                        : 'Não há registro')
                   ],
                 ),
               ),
@@ -179,7 +179,7 @@ class _HomeBar extends State<HomeBar> {
                         ? 'Entrada: ' +
                             inputFormat
                                 .format(DateTime.parse(this.workDay.entryBack))
-                        : 'Não a registro')
+                        : 'Não há registro')
                   ],
                 ),
               ),
@@ -193,7 +193,7 @@ class _HomeBar extends State<HomeBar> {
                         ? 'Saída: ' +
                             inputFormat.format(
                                 DateTime.parse(this.workDay.outOfTheDay))
-                        : 'Não a registro')
+                        : 'Não há registro')
                   ],
                 ),
               ),
