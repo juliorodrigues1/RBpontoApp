@@ -50,14 +50,20 @@ dependencies:
   shared_preferences: ^2.0.6
   #Ele define a classe Intl, com a localidade padrão e métodos para acessar a maioria dos mecanismos de internacionalização.
   intl: ^0.17.0
-
+  #Bivliotec de Icones variadas
   flutter_svg: ^0.22.0
-
+  #Gerador de configuração específico do ambiente.
+  #Permite especificar a configuração de env durante a construção de CI / CD.
+  #Criado principalmente para simplificar a configuração de construção do Flutter.
   environment_config: ^3.0.0
 
   flutter_modular: ^3.2.2+1
-
+  # Um invólucro em torno de InheritedWidget para torná-los mais fáceis de usar e mais reutilizáveis.
   provider: ^5.0.0
+  # Plugin Flutter para descobrir o estado da conectividade da rede (Wi-Fi e móvel / celular) no Android e iOS.
+  connectivity: ^3.0.6
+  # suporte de fornecedor para sobreposição, fácil de construir brinde e notificação interna
+  overlay_support: ^1.2.1
 
 
 dev_dependencies:
