@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:Ponto_App/pages/home.dart';
 import 'package:Ponto_App/values/preferences_keys.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,6 +29,7 @@ class _PointBar extends State<PointBar> {
   var status;
   int emoticons;
   bool _isInAsyncCall = false;
+StreamSubscription subscription;
 
   @override
   void initState() {
@@ -43,6 +46,17 @@ class _PointBar extends State<PointBar> {
       getImage();
     else
       showMenssage;
+
+//teste
+    subscription = Connectivity().onConnectivityChanged.listen((event) {showMenssageOff});
+
+  }
+// teste
+  @override
+  void dispose(){
+    subscription.cancel();
+    super.dispose();
+
   }
 
   Future getImage() async {
@@ -62,7 +76,6 @@ class _PointBar extends State<PointBar> {
     }
 
     var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
-
     List<int> imageBytes = uploadimage.readAsBytesSync();
     await this.getCurrentLocation();
     var response = await http.post(url, body: {
@@ -198,6 +211,18 @@ class _PointBar extends State<PointBar> {
       ),
     );
   }
+
+
+
+
+  Widget showMenssageOff(){
+    // Overlay notification here!
+
+    // mensagem de conectividade em off
+}
+
+
+
 
   Widget showMenssage(BuildContext context) {
     Widget okButton = FlatButton(
