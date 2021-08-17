@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:Ponto_App/button/button_pdf.dart';
 import 'package:Ponto_App/model/workDay.dart';
 import 'package:Ponto_App/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,9 @@ import 'package:Ponto_App/global/variables.dart' as variables_global;
 import 'package:Ponto_App/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:Ponto_App/controller/pdf.dart';
+import '../pdf_viewer.dart';
+import 'dart:io';
 
 class HomeBar extends StatefulWidget {
   @override
@@ -26,6 +30,9 @@ class _HomeBar extends State<HomeBar> {
     });
     super.initState();
   }
+
+  void openPDF(BuildContext context, File file) => Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)));
 
   @override
   void dispose() {
@@ -141,6 +148,16 @@ class _HomeBar extends State<HomeBar> {
     return this.workDay != null
         ? Column(
             children: [
+              SizedBox(height: 16),
+              ButtonWidget(
+                text: 'Gerar Demonstrativo',
+                onClicked: () async {
+                  final url = PreferencesKeys.apidemonstrativo;
+                  // 'https://www.thecampusqdl.com/uploads/files/pdf_sample_2.pdf';
+                  final file = await Pdf.loadNetwork(url);
+                  openPDF(context, file);
+                },
+              ),
               //entry
               Card(
                 child: Row(

@@ -1,5 +1,6 @@
 import 'package:connectivity/connectivity.dart';
 
+
 //classe de teste conexão
 class Conexao {
   teste() async {

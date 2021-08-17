@@ -23,7 +23,8 @@ class _PointBar extends State<PointBar> {
   File uploadimage;
   String employ_id = '';
   String error_message = '';
-  String latitudeData = "";
+  String
+  latitudeData = "";
   String longitudeData = "";
   final imagePicker = ImagePicker();
   var status;
@@ -47,8 +48,8 @@ StreamSubscription subscription;
     else
       showMenssage;
 
-//teste
-    subscription = Connectivity().onConnectivityChanged.listen((event) {showMenssageOff});
+//Teste
+    subscription = Connectivity().onConnectivityChanged.listen((event) {showMenssageOff;});
 
   }
 // teste
