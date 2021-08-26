@@ -1,18 +1,18 @@
 import 'dart:convert';
-import 'package:Ponto_App/TextField/textfield_widget.dart';
-import 'package:Ponto_App/controller/Uplogin.dart';
-import 'package:Ponto_App/model/user.dart';
-import 'package:Ponto_App/ui/shared/globals.dart';
-import 'package:Ponto_App/values/preferences_keys.dart';
-import 'package:Ponto_App/viewmodels/login_model.dart';
-import 'package:Ponto_App/viewmodels/wave_widget.dart';
+import 'package:Ponto_Riobranco/TextField/textfield_widget.dart';
+import 'package:Ponto_Riobranco/controller/Uplogin.dart';
+import 'package:Ponto_Riobranco/model/user.dart';
+import 'package:Ponto_Riobranco/ui/shared/globals.dart';
+import 'package:Ponto_Riobranco/values/preferences_keys.dart';
+import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
+import 'package:Ponto_Riobranco/viewmodels/wave_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:provider/provider.dart';
-import 'package:Ponto_App/model/employ.dart' as employ_global;
-import 'package:Ponto_App/global/variables.dart' as variables_global;
+import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
+import 'package:Ponto_Riobranco/global/variables.dart' as variables_global;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {

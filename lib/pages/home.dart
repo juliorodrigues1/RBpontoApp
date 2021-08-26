@@ -1,10 +1,10 @@
-import 'package:Ponto_App/pages/NavigationBar/home_bar.dart';
-import 'package:Ponto_App/pages/NavigationBar/notifications_bar.dart';
-import 'package:Ponto_App/pages/NavigationBar/point_bar.dart';
-import 'package:Ponto_App/pages/NavigationBar/profile_bar.dart';
+import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
+import 'package:Ponto_Riobranco/pages/NavigationBar/notifications_bar.dart';
+import 'package:Ponto_Riobranco/pages/NavigationBar/point_bar.dart';
+import 'package:Ponto_Riobranco/pages/NavigationBar/profile_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Ponto_App/model/employ.dart' as employ_global;
+import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 
 class Home extends StatefulWidget {
   String employID;
@@ -26,7 +26,6 @@ class _Home extends State<Home> {
       employ_global.emoticons = emoticons;
     });
   }
-
   final pages = [
     HomeBar(),
     PointBar(),

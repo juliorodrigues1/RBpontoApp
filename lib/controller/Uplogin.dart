@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:Ponto_App/model/user.dart';
-import 'package:Ponto_App/pages/home.dart';
-import 'package:Ponto_App/values/preferences_keys.dart';
+import 'package:Ponto_Riobranco/model/user.dart';
+import 'package:Ponto_Riobranco/pages/home.dart';
+import 'package:Ponto_Riobranco/values/preferences_keys.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

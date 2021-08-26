@@ -1,6 +1,6 @@
-// import 'package:Ponto_App/viewmodels/login_model.dart';
-import 'package:Ponto_App/pages/NavigationBar/home_bar.dart';
-import 'package:Ponto_App/viewmodels/login_model.dart';
+
+import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
+import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
