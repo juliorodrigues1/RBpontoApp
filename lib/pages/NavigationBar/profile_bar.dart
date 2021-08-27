@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:Ponto_App/model/profile.dart';
-import 'package:Ponto_App/values/preferences_keys.dart';
+import 'package:Ponto_Riobranco/model/profile.dart';
+import 'package:Ponto_Riobranco/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:Ponto_App/model/employ.dart' as employ_global;
+import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 
 
 class Profile extends StatefulWidget {

@@ -1,14 +1,14 @@
 import 'dart:convert';
-import 'package:Ponto_App/button/button_pdf.dart';
-import 'package:Ponto_App/model/workDay.dart';
-import 'package:Ponto_App/values/preferences_keys.dart';
+import 'package:Ponto_Riobranco/button/button_pdf.dart';
+import 'package:Ponto_Riobranco/model/workDay.dart';
+import 'package:Ponto_Riobranco/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Ponto_App/global/variables.dart' as variables_global;
-import 'package:Ponto_App/model/employ.dart' as employ_global;
+import 'package:Ponto_Riobranco/global/variables.dart' as variables_global;
+import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:Ponto_App/controller/pdf.dart';
+import 'package:Ponto_Riobranco/controller/pdf.dart';
 import '../pdf_viewer.dart';
 import 'dart:io';
 
@@ -68,7 +68,7 @@ class _HomeBar extends State<HomeBar> {
     return NestedScrollView(
       headerSliverBuilder: (context, condition) {
         return <Widget>[
-          SliverAppBar(
+           SliverAppBar(
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: false,
@@ -83,7 +83,7 @@ class _HomeBar extends State<HomeBar> {
             SizedBox(height: 20),
             Text('Humor Neste Momento',
                 style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -96,7 +96,7 @@ class _HomeBar extends State<HomeBar> {
                       width: 60, height: 50),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20),
+                   padding: EdgeInsets.only(left: 20),
                 ),
                 FloatingActionButton(
                   onPressed: () => _getEmotion(2),
@@ -128,19 +128,20 @@ class _HomeBar extends State<HomeBar> {
                   child: Image.asset('assets/icons/triste.png',
                       width: 55, height: 50),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Text('Registro do Dia',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             Container(
               child: _itemBuilder(context, 1),
             ),
           ],
-        ),
-      ),
+        )
+      )
     );
+
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
@@ -148,12 +149,11 @@ class _HomeBar extends State<HomeBar> {
     return this.workDay != null
         ? Column(
             children: [
-              SizedBox(height: 16),
+              // SizedBox(height: 10),
               ButtonWidget(
                 text: 'Gerar Demonstrativo',
                 onClicked: () async {
                   final url = PreferencesKeys.apidemonstrativo;
-                  // 'https://www.thecampusqdl.com/uploads/files/pdf_sample_2.pdf';
                   final file = await Pdf.loadNetwork(url);
                   openPDF(context, file);
                 },
