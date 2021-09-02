@@ -23,8 +23,7 @@ class _PointBar extends State<PointBar> {
   File uploadimage;
   String employ_id = '';
   String error_message = '';
-  String
-  latitudeData = "";
+  String latitudeData = "";
   String longitudeData = "";
   final imagePicker = ImagePicker();
   var status;
@@ -226,7 +225,7 @@ StreamSubscription subscription;
 
 
   Widget showMenssage(BuildContext context) {
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
         child: Text("OK"),
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -257,7 +256,7 @@ StreamSubscription subscription;
   showAlertDialog1(BuildContext context) {
     // configura o button
     // ignore: deprecated_member_use
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
         child: Text("OK"),
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -288,7 +287,7 @@ StreamSubscription subscription;
   showAlertDialogSucess(BuildContext context) {
     // configura o button
     // ignore: deprecated_member_use
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
         child: Text("OK"),
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -319,7 +318,7 @@ StreamSubscription subscription;
   showAlertDialogError(BuildContext context) {
     // configura o button
     // ignore: deprecated_member_use
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
         child: Text("OK"),
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('dialog');

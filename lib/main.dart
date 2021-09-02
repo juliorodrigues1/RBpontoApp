@@ -10,8 +10,8 @@ import 'pages/home.dart';
 
 
 
-void main() => runApp(MyApp());
-class MyApp extends StatelessWidget{
+void main() => runApp(PontoMain());
+class PontoMain extends StatelessWidget{
   final appTitle = 'Ponto RB';
   @override
   Widget build(BuildContext context){

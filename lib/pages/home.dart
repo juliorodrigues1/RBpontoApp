@@ -18,7 +18,10 @@ class Home extends StatefulWidget {
 class _Home extends State<Home> {
   int _indexNavigation = 0;
   int emoticons = 0;
-
+  String home = "home";
+  String ponto = "Ponto";
+  String perfil = "Perfil";
+  String notificacoes = "Notificações";
   //
   getEmotion(emoticons) async {
     setState(() {
@@ -58,19 +61,19 @@ class _Home extends State<Home> {
               Icons.home,
               color: Colors.blue,
             ),
-            title: Text('Home'),
+            label: home,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.camera_alt_outlined, color: Colors.blue),
-            title: Text(' Ponto'),
+            label:  ponto,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outlined, color: Colors.blue),
-            title: Text('Perfil'),
+            label: perfil,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications_active_outlined, color: Colors.blue),
-            title: Text('Notificações'),
+            label: notificacoes,
           ),
         ],
         onTap: (index) {
