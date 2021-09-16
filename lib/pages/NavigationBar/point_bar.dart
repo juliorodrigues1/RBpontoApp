@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
+import 'package:permission_handler/permission_handler.dart';
 
 class PointBar extends StatefulWidget {
 
@@ -22,9 +23,9 @@ class _PointBar extends State<PointBar> {
   File _image;
   File uploadimage;
   String employ_id = '';
-  String error_message = '';
   String latitudeData = "";
   String longitudeData = "";
+  String error_message = '';
   final imagePicker = ImagePicker();
   var status;
   int emoticons;
@@ -49,7 +50,6 @@ StreamSubscription subscription;
 
 //Teste
     subscription = Connectivity().onConnectivityChanged.listen((event) {showMenssageOff;});
-
   }
 // teste
   @override
@@ -66,6 +66,9 @@ StreamSubscription subscription;
     setState(() {
       _isInAsyncCall = true;
     });
+
+
+
     final image = await imagePicker.getImage(
         source: ImageSource.camera, maxWidth: 480, maxHeight: 640);
     if (this.mounted) {
@@ -332,7 +335,7 @@ StreamSubscription subscription;
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Error"),
-      content: Text(error_message),
+      content: Text('Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !'),
       actions: [
         okButton,
       ],

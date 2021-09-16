@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.1.0+3
+version: 2.5.0+5
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -64,6 +64,8 @@ dependencies:
   overlay_support: ^1.2.1
   # pdf view (viazualização de pdf no App)
   flutter_pdfview: ^1.1.0
+  # Este plugin fornece uma API de plataforma cruzada (iOS, Android) para solicitar permissões e verificar seu status.
+  permission_handler: ^8.1.6
 
 
 
