@@ -66,6 +66,8 @@ dependencies:
   flutter_pdfview: ^1.1.0
   # Este plugin fornece uma API de plataforma cruzada (iOS, Android) para solicitar permissões e verificar seu status.
   permission_handler: ^8.1.6
+  # Isso significa referir-se à autenticação biométrica no iOS (Touch ID ou código de bloqueio) e às APIs de impressão digital no Android (introduzidas no Android 6.0).
+  local_auth: ^1.1.7
 
 
 

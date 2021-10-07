@@ -11,7 +11,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
-import 'package:permission_handler/permission_handler.dart';
 
 class PointBar extends StatefulWidget {
 
@@ -67,10 +66,10 @@ StreamSubscription subscription;
       _isInAsyncCall = true;
     });
 
-
-
     final image = await imagePicker.getImage(
-        source: ImageSource.camera, maxWidth: 480, maxHeight: 640);
+        source: ImageSource.camera, maxWidth: 480, maxHeight: 640,
+        preferredCameraDevice:CameraDevice.front,
+    );
     if (this.mounted) {
       setState(() {
         _image = File(image.path);
@@ -79,6 +78,7 @@ StreamSubscription subscription;
     }
 
     var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
+    // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
     List<int> imageBytes = uploadimage.readAsBytesSync();
     await this.getCurrentLocation();
     var response = await http.post(url, body: {
@@ -181,6 +181,7 @@ StreamSubscription subscription;
           child: buildView(context),
         ),
         inAsyncCall: _isInAsyncCall,
+
         // demo of some additional parameters
         opacity: 0.7,
         progressIndicator: SizedBox(
