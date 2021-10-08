@@ -42,6 +42,7 @@ class _HomeBar extends State<HomeBar> {
 
   Future<Map> listWorkDay() async {
     var url = Uri.http(PreferencesKeys.apiURL, "/api/employ/workday");
+    // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
     var response = await http.post(url, body: {
       'employ_id': employ_global.employ_id,
     });
