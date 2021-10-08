@@ -75,6 +75,8 @@ StreamSubscription subscription;
         _image = File(image.path);
         uploadimage = File(image.path);
       });
+    }else{
+      return showAlertDialog1(context);
     }
 
     var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
@@ -94,7 +96,6 @@ StreamSubscription subscription;
       setState(() {
         _isInAsyncCall = false;
       });
-
       if (jsonDecode(response.body)['sucess'].hashCode.toString() != '2011') {
         //2011 valor padrão para null
         showAlertDialogSucess(context);
@@ -107,7 +108,8 @@ StreamSubscription subscription;
     } else {
       setState(() {
         error_message =
-            'Ops, algo de errado aconteceu, entrar em contato com suporte.';
+            // 'Ops, algo de errado aconteceu, entrar em contato com suporte.';
+        'Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !';
       });
       showAlertDialogError(context);
     }
@@ -243,7 +245,7 @@ StreamSubscription subscription;
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Não é possível continuar."),
-      content: Text("Por favor entre em contato com suporte !"),
+      content: Text("Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !"),
       actions: [
         okButton,
       ],
@@ -310,7 +312,7 @@ StreamSubscription subscription;
         okButton,
       ],
     );
-    // exibe o dialog
+        // exibe o dialog
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -336,11 +338,12 @@ StreamSubscription subscription;
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
       title: Text("Error"),
-      content: Text('Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !'),
+      content: Text(error_message),
       actions: [
         okButton,
       ],
     );
+
     // exibe o dialog
     showDialog(
       context: context,
