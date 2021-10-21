@@ -58,91 +58,30 @@ class _HomeBar extends State<HomeBar> {
     });
   }
 
-  void _getEmotion(int id) {
-    setState(() {
-      employ_global.emoticons = id;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
-      headerSliverBuilder: (context, condition) {
-        return <Widget>[
-           SliverAppBar(
-            expandedHeight: 200,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: false,
-              background: Image.asset("assets/branca.png"),
-            ),
-          )
-        ];
-      },
-      body: Container(
-        child: Column(
+        headerSliverBuilder: (context, condition) {
+          return <Widget>[
+            SliverAppBar(
+              expandedHeight: 200,
+              backgroundColor: Color(0xff09a7ff),
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: false,
+                background: Image.asset("assets/branca.png"),
+              ),
+            )
+          ];
+        },
+        body: Container(
+            child: Column(
           children: [
-            SizedBox(height: 20),
-            Text('Humor Neste Momento',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FloatingActionButton(
-                  onPressed: () => _getEmotion(1),
-                  heroTag: 'button1',
-                  backgroundColor: Colors.green,
-                  splashColor: Colors.white,
-                  child: Image.asset("assets/icons/feliz.png",
-                      width: 60, height: 50),
-                ),
-                Padding(
-                   padding: EdgeInsets.only(left: 20),
-                ),
-                FloatingActionButton(
-                  onPressed: () => _getEmotion(2),
-                  heroTag: 'button2',
-                  backgroundColor: Colors.blue,
-                  splashColor: Colors.white,
-                  child: Image.asset('assets/icons/neutro.png',
-                      width: 50, height: 50),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                ),
-                FloatingActionButton(
-                  onPressed: () => _getEmotion(3),
-                  heroTag: 'button3',
-                  backgroundColor: Colors.red[900],
-                  splashColor: Colors.white,
-                  child: Image.asset('assets/icons/raiva.png',
-                      width: 55, height: 50),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                ),
-                FloatingActionButton(
-                  onPressed: () => _getEmotion(4),
-                  heroTag: 'button4',
-                  backgroundColor: Colors.black,
-                  splashColor: Colors.white,
-                  child: Image.asset('assets/icons/triste.png',
-                      width: 55, height: 50),
-                ),
-                SizedBox(height: 10),
-              ],
-            ),
-            SizedBox(height: 10),
-            Text('Registro do Dia',
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            SizedBox(height: 30),
             Container(
               child: _itemBuilder(context, 1),
             ),
           ],
-        )
-      )
-    );
-
+        )));
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
@@ -151,13 +90,27 @@ class _HomeBar extends State<HomeBar> {
         ? Column(
             children: [
               // SizedBox(height: 10),
-              ButtonWidget(
-                text: 'Gerar Demonstrativo',
-                onClicked: () async {
-                  final url = PreferencesKeys.apidemonstrativo;
-                  final file = await Pdf.loadNetwork(url);
-                  openPDF(context, file);
-                },
+              // ButtonWidget(
+              //   text: 'Gerar Demonstrativo',
+              //   onClicked: () async {
+              //     final url = PreferencesKeys.apidemonstrativo;
+              //     final file = await Pdf.loadNetwork(url);
+              //     openPDF(context, file);
+              //   },
+              // ),
+
+              SizedBox(height:10),
+              Card(color: Colors.black,
+                child: Text('Registro do Dia',
+                    style: TextStyle(
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 30,
+
+                      foreground: Paint()
+                        ..style = PaintingStyle.fill
+                        ..strokeWidth = 6
+                        ..color = Colors.white,
+                    )),
               ),
               //entry
               Card(

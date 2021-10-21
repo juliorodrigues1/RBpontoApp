@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 
-
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -17,13 +16,18 @@ class _ProfileState extends State<Profile> {
   ProfileModel profileModel;
 
   Future fetchPost() async {
-    var url = Uri.http(PreferencesKeys.apiURL, '/api/employ/infomation');
-    var response = await http.post(url, body: {
-      'employ_id': employ_global.employ_id,
-    });
-    Map<String, dynamic> mapProfile = json.decode(response.body);
-    print(mapProfile.toString());
-    return mapProfile;
+    try {
+      var url = Uri.http(PreferencesKeys.apiURL, '/api/employ/infomation');
+      // var url = Uri.http(PreferencesKeys.apihomologa, '/api/employ/infomation');
+      var response = await http.post(url, body: {
+        'employ_id': employ_global.employ_id,
+      });
+      Map<String, dynamic> mapProfile = json.decode(response.body);
+      print(mapProfile.toString());
+      return mapProfile;
+    }catch(ex) {
+      return ex;
+    }
   }
 
   void  getinfo() async {
@@ -41,17 +45,18 @@ class _ProfileState extends State<Profile> {
   Widget _cabProfile(BuildContext context, int index){
     return Container(
       height: 150,
-      color: Colors.blue,
+      color: Color(0xff09a7ff),
       child: Center(
         child: ClipRRect(
           borderRadius: BorderRadius.circular(100),
-          child: Image.network(
-            'http://' + this.profileModel.image,width: 100,
-
-          ),
+          child:
+              'http://' + this.profileModel.image != null ?
+            Image.network(
+               'http://' + this.profileModel.image, width: 100,
+          )
+          : Text('erro')
         ),
       ),
-
     );
   }
 

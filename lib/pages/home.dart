@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 
+
 class Home extends StatefulWidget {
   String employID;
 
@@ -19,22 +20,27 @@ class _Home extends State<Home> {
   int _indexNavigation = 0;
   int emoticons = 0;
   String home = "home";
-  String ponto = "Ponto";
+  String point = "Ponto";
   String perfil = "Perfil";
-  String notificacoes = "Notificações";
-  //
+  String opcoes = "Opções";
+
+
+  GlobalKey btnKey = GlobalKey();
   getEmotion(emoticons) async {
     setState(() {
       this.emoticons = emoticons;
       employ_global.emoticons = emoticons;
     });
   }
+
   final pages = [
     HomeBar(),
     PointBar(),
     Profile(),
     Notifications(),
   ];
+
+
 
   @override
   void initState() {
@@ -45,43 +51,61 @@ class _Home extends State<Home> {
     super.initState();
   }
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      body: pages[_indexNavigation],
+      body:
+      pages[_indexNavigation],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _indexNavigation,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xDDE7E7E7),
-        iconSize: 25,
-        selectedFontSize: 16,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.blue,
-            ),
-            label: home,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt_outlined, color: Colors.blue),
-            label:  ponto,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outlined, color: Colors.blue),
-            label: perfil,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_active_outlined, color: Colors.blue),
-            label: notificacoes,
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _indexNavigation = index;
-          });
-        },
-      ),
+         currentIndex: _indexNavigation,
+         type: BottomNavigationBarType.fixed,
+         backgroundColor: Color(0xff09a7ff),
+         iconSize: 30,
+         selectedFontSize: 16,
+        selectedItemColor:Colors.white,
+
+         items: [
+           BottomNavigationBarItem(
+             icon: Icon(
+               Icons.home,
+               // color: Colors.white,
+             ),
+             label: home,
+             backgroundColor: Colors.black
+           ),
+           BottomNavigationBarItem(
+             icon: Icon(
+                 Icons.camera_alt,
+                 // color: Colors.black
+             ),
+             label: point,
+           ),
+           BottomNavigationBarItem(
+             icon: Icon(
+                 Icons.person,
+                 // color: Colors.black
+             ),
+             label: perfil,
+           ),
+           BottomNavigationBarItem(
+             icon: Icon(
+                 Icons.menu_open_rounded,
+                 // color: Colors.black
+             ),
+             label: opcoes,
+           ),
+         ],
+         onTap: (index) {
+           setState(() {
+             _indexNavigation = index;
+           });
+         },
+       ),
     );
   }
 }
