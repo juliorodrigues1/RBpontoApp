@@ -31,8 +31,7 @@ class _HomeBar extends State<HomeBar> {
     super.initState();
   }
 
-  void openPDF(BuildContext context, File file) => Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)));
+
 
   @override
   void dispose() {
@@ -89,15 +88,8 @@ class _HomeBar extends State<HomeBar> {
     return this.workDay != null
         ? Column(
             children: [
-              // SizedBox(height: 10),
-              // ButtonWidget(
-              //   text: 'Gerar Demonstrativo',
-              //   onClicked: () async {
-              //     final url = PreferencesKeys.apidemonstrativo;
-              //     final file = await Pdf.loadNetwork(url);
-              //     openPDF(context, file);
-              //   },
-              // ),
+              SizedBox(height: 10),
+
 
               SizedBox(height: 10),
               Card(

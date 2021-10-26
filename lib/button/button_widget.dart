@@ -27,14 +27,14 @@ class ButtonWidget extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           child: Container(
-            height: 40.0,
+            height: 20.0,
             child: Center(
               child: Text(
                 title,
                 style: TextStyle(
-                  color: hasBorder ? Global.mediumBlue : Global.white,
+                  color: hasBorder ? Colors.black : Colors.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
+                  fontSize: 6.0,
                 ),
               ),
             ),
