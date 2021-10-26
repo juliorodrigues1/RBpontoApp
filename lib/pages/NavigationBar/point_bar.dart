@@ -28,6 +28,7 @@ class _PointBar extends State<PointBar> {
   final imagePicker = ImagePicker();
   var status;
   int emoticons;
+
   bool _isInAsyncCall = false;
 StreamSubscription subscription;
 
@@ -79,8 +80,8 @@ StreamSubscription subscription;
       return showAlertDialog1(context);
     }
 
-    var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
-    // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
+    // var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
+    var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
     List<int> imageBytes = uploadimage.readAsBytesSync();
     await this.getCurrentLocation();
     var response = await http.post(url, body: {
@@ -125,10 +126,19 @@ StreamSubscription subscription;
       });
     }
   }
+  getEmotion(emoticons) async {
+    setState(() {
+      this.emoticons = emoticons;
+      employ_global.emoticons = emoticons;
+      getImage();
+    });
+  }
+
 
   void _getEmotion(int id) {
     setState(() {
       employ_global.emoticons = id;
+      getImage();
     });
   }
 
@@ -211,30 +221,34 @@ StreamSubscription subscription;
 
           Container(
             padding: EdgeInsets.only(
-              top: 80,
+              top: 50,
+              bottom: 20,
             ),
             child: _image == null
                 ? Center(
                     child: Card(
-                      color: Colors.lightBlueAccent,
+                      color: Colors.white,
                       child: Text(
                         'TIRE SUA FOTO PARA REGISTAR SEU PONTO',
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, color: Colors.black),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                     ),
                   )
                 : Image.file(
                     _image,
-                    width: 350,
-                    height: 250,
+                    width: 150,
+                    height: 170,
                   ),
           ),
-          SizedBox(height: 20),
+
           FloatingActionButton(
             onPressed: getImage,
-            backgroundColor: Colors.black,
-            child: Icon(Icons.camera_alt),
+            backgroundColor: Color(0xff09a7ff),
+            // Colors.white,
+            child: Icon(Icons.camera_alt,
+              color: Colors.white, ),
           ),
         ],
       ),
@@ -339,7 +353,9 @@ StreamSubscription subscription;
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      Home(employID: employ_global.employ_id)));
+                      PointBar(
+                          // employID: employ_global.employ_id
+                      )));
         });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(

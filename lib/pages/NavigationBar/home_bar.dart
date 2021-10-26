@@ -99,17 +99,17 @@ class _HomeBar extends State<HomeBar> {
               //   },
               // ),
 
-              SizedBox(height:10),
-              Card(color: Colors.black,
+              SizedBox(height: 10),
+              Card(
+                color: Colors.white,
                 child: Text('Registro do Dia',
                     style: TextStyle(
                       // fontWeight: FontWeight.bold,
                       fontSize: 30,
-
                       foreground: Paint()
                         ..style = PaintingStyle.fill
                         ..strokeWidth = 6
-                        ..color = Colors.white,
+                        ..color = Colors.black,
                     )),
               ),
               //entry
@@ -147,7 +147,7 @@ class _HomeBar extends State<HomeBar> {
                     Image.asset('assets/icons/Ellipse 1.png',
                         width: 50, height: 50),
                     Text(this.workDay.entryBack != null
-                        ? 'Entrada: ' +
+                        ? 'Entrada:  ' +
                             inputFormat
                                 .format(DateTime.parse(this.workDay.entryBack))
                         : 'Não há registro')
