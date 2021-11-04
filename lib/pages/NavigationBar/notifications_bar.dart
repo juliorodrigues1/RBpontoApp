@@ -21,12 +21,12 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.black,
       body: Container(
         child: ListView(
           children: [
             Card(
                 margin: EdgeInsets.fromLTRB(50, 50, 50, 50),
-                elevation: 5,
                 child: InkWell(
                   onTap: () async {
                     final url = PreferencesKeys.apidemonstrativo;

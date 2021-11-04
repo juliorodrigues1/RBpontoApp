@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:Ponto_Riobranco/button/button_pdf.dart';
 import 'package:Ponto_Riobranco/model/workDay.dart';
 import 'package:Ponto_Riobranco/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +7,7 @@ import 'package:Ponto_Riobranco/global/variables.dart' as variables_global;
 import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:Ponto_Riobranco/controller/pdf.dart';
-import '../pdf_viewer.dart';
-import 'dart:io';
+
 
 class HomeBar extends StatefulWidget {
   @override
@@ -66,8 +63,9 @@ class _HomeBar extends State<HomeBar> {
               expandedHeight: 200,
               backgroundColor: Color(0xff09a7ff),
               flexibleSpace: FlexibleSpaceBar(
-                centerTitle: false,
-                background: Image.asset("assets/branca.png"),
+                centerTitle: true,
+                background: Image.asset("assets/pmrb.png",
+                ),
               ),
             )
           ];

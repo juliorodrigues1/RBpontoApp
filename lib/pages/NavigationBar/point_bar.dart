@@ -151,7 +151,7 @@ StreamSubscription subscription;
             backgroundColor: Color(0xff09a7ff),
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: false,
-              background: Image.asset("assets/branca.png"),
+              background: Image.asset("assets/pmrb.png"),
             ),
           ),
         ];
@@ -265,7 +265,6 @@ StreamSubscription subscription;
           child: buildView(context),
         ),
         inAsyncCall: _isInAsyncCall,
-
         // demo of some additional parameters
         opacity: 0.7,
         progressIndicator: SizedBox(
@@ -302,11 +301,40 @@ StreamSubscription subscription;
 
 
 
-
+// MENSAGGEM EM CASO DE CELULAR SEM NENHUMA CONEXÃO
   Widget showMenssageOff(){
     // Overlay notification here!
+    Widget okButton = TextButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pop('dialog');
+          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      PointBar()
+                      // Home(employID: employ_global.employ_id)
+                //ADICIONAR NOVA ROTA
+              ));
+        });
 
-    // mensagem de conectividade em off
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Você Não Tem Conexão Com Internet"),
+      content: Text("Por favor verifique com seu superior, se você tem permissão para bater ponto Offline"),
+      actions: [
+        okButton,
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+
 }
 
 

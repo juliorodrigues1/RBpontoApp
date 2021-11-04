@@ -104,7 +104,6 @@ flutter:
     - assets/icons/triste.png
     - assets/ORIGINAL HORIZONTAL 02.png
     - assets/ORIGINAL HORIZONTAL 01.png
-    - assets/preto.png
     - assets/icons/iconePonto.png
     - assets/fundo.jpeg
     - assets/Image.png
@@ -112,6 +111,8 @@ flutter:
     - assets/branca.png
     - assets/Ellipse 1.png
     - assets/Ellipse 1 (1).png
+    - assets/preto.png
+    - assets/pmrb.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
