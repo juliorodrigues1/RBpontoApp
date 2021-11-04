@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.5.0+5
+version: 3.0.0+6
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -68,6 +68,8 @@ dependencies:
   permission_handler: ^8.1.6
   # Isso significa referir-se à autenticação biométrica no iOS (Touch ID ou código de bloqueio) e às APIs de impressão digital no Android (introduzidas no Android 6.0).
   local_auth: ^1.1.7
+  # popup de menu criado em dart para ios e android
+  popup_menu: ^1.0.5
 
 
 
@@ -102,7 +104,6 @@ flutter:
     - assets/icons/triste.png
     - assets/ORIGINAL HORIZONTAL 02.png
     - assets/ORIGINAL HORIZONTAL 01.png
-    - assets/preto.png
     - assets/icons/iconePonto.png
     - assets/fundo.jpeg
     - assets/Image.png
@@ -110,6 +111,8 @@ flutter:
     - assets/branca.png
     - assets/Ellipse 1.png
     - assets/Ellipse 1 (1).png
+    - assets/preto.png
+    - assets/pmrb.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

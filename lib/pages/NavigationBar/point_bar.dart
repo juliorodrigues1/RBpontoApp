@@ -28,6 +28,7 @@ class _PointBar extends State<PointBar> {
   final imagePicker = ImagePicker();
   var status;
   int emoticons;
+
   bool _isInAsyncCall = false;
 StreamSubscription subscription;
 
@@ -79,8 +80,8 @@ StreamSubscription subscription;
       return showAlertDialog1(context);
     }
 
-    var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
-    // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
+    // var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
+    var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
     List<int> imageBytes = uploadimage.readAsBytesSync();
     await this.getCurrentLocation();
     var response = await http.post(url, body: {
@@ -125,6 +126,21 @@ StreamSubscription subscription;
       });
     }
   }
+  getEmotion(emoticons) async {
+    setState(() {
+      this.emoticons = emoticons;
+      employ_global.emoticons = emoticons;
+      getImage();
+    });
+  }
+
+
+  void _getEmotion(int id) {
+    setState(() {
+      employ_global.emoticons = id;
+      getImage();
+    });
+  }
 
   Widget buildView(BuildContext context) {
     return NestedScrollView(
@@ -132,41 +148,107 @@ StreamSubscription subscription;
         return <Widget>[
           SliverAppBar(
             expandedHeight: 200,
+            backgroundColor: Color(0xff09a7ff),
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: false,
-              background: Image.asset("assets/branca.png"),
+              background: Image.asset("assets/pmrb.png"),
             ),
           ),
         ];
       },
       body: Column(
         children: [
+          SizedBox(height:20),
+          Text('Humor Neste Momento',
+                style: TextStyle(
+                  // fontWeight: FontWeight.bold,
+                fontSize: 20,
+                foreground: Paint()
+                  ..style = PaintingStyle.fill
+                  ..strokeWidth = 6
+                  ..color = Colors.black ,
+
+              )),
+          SizedBox(height:10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FloatingActionButton(
+                onPressed: () => _getEmotion(1),
+                heroTag: 'button1',
+                backgroundColor: Colors.green,
+                splashColor: Colors.white,
+                child: Image.asset("assets/icons/feliz.png",
+                    width: 40, height: 50),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+              ),
+              FloatingActionButton(
+
+                 onPressed: () => _getEmotion(2),
+                heroTag: 'button2',
+                backgroundColor: Colors.blue,
+                splashColor: Colors.white,
+                child: Image.asset('assets/icons/neutro.png',
+                    width: 50, height: 50),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+              ),
+              FloatingActionButton(
+                onPressed: () => _getEmotion(3),
+                heroTag: 'button3',
+                backgroundColor: Colors.red[900],
+                splashColor: Colors.white,
+                child: Image.asset('assets/icons/raiva.png',
+                    width: 55, height: 50),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+              ),
+              FloatingActionButton(
+                onPressed: () => _getEmotion(4),
+                heroTag: 'button4',
+                backgroundColor: Colors.black,
+                splashColor: Colors.white,
+                child: Image.asset('assets/icons/triste.png',
+                    width: 55, height: 50),
+              ),
+              SizedBox(height: 10),
+            ],
+          ),
+
           Container(
             padding: EdgeInsets.only(
-              top: 80,
+              top: 50,
+              bottom: 20,
             ),
             child: _image == null
                 ? Center(
                     child: Card(
-                      color: Colors.lightBlueAccent,
+                      color: Colors.white,
                       child: Text(
                         'TIRE SUA FOTO PARA REGISTAR SEU PONTO',
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, color: Colors.black),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                     ),
                   )
                 : Image.file(
                     _image,
-                    width: 350,
-                    height: 250,
+                    width: 150,
+                    height: 170,
                   ),
           ),
-          SizedBox(height: 20),
+
           FloatingActionButton(
             onPressed: getImage,
-            backgroundColor: Colors.black,
-            child: Icon(Icons.camera_alt),
+            backgroundColor: Color(0xff09a7ff),
+            // Colors.white,
+            child: Icon(Icons.camera_alt,
+              color: Colors.white, ),
           ),
         ],
       ),
@@ -183,7 +265,6 @@ StreamSubscription subscription;
           child: buildView(context),
         ),
         inAsyncCall: _isInAsyncCall,
-
         // demo of some additional parameters
         opacity: 0.7,
         progressIndicator: SizedBox(
@@ -220,11 +301,40 @@ StreamSubscription subscription;
 
 
 
-
+// MENSAGGEM EM CASO DE CELULAR SEM NENHUMA CONEXÃO
   Widget showMenssageOff(){
     // Overlay notification here!
+    Widget okButton = TextButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pop('dialog');
+          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      PointBar()
+                      // Home(employID: employ_global.employ_id)
+                //ADICIONAR NOVA ROTA
+              ));
+        });
 
-    // mensagem de conectividade em off
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Você Não Tem Conexão Com Internet"),
+      content: Text("Por favor verifique com seu superior, se você tem permissão para bater ponto Offline"),
+      actions: [
+        okButton,
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+
 }
 
 
@@ -271,7 +381,9 @@ StreamSubscription subscription;
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      Home(employID: employ_global.employ_id)));
+                      PointBar(
+                          // employID: employ_global.employ_id
+                      )));
         });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(

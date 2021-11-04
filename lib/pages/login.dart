@@ -128,7 +128,7 @@ class _Login extends State<Login> {
             padding: EdgeInsets.symmetric(vertical: 200),
             // width: double.infinity,
             height: size.height - 200,
-            color: Global.mediumBlue,
+            color:Color(0xff09a7ff),
           ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 1000),
@@ -187,13 +187,9 @@ class _Login extends State<Login> {
                 ),
                 FloatingActionButton.extended(
                   onPressed: up,
-                  backgroundColor: Global.mediumBlue,
+                  backgroundColor: Color(0xff09a7ff),
                   label: Text('Entrar'),
                 )
-                // ButtonWidget(
-                //   title: 'Entrar',
-                //   hasBorder: false,
-                // ),
               ],
             ),
           ),

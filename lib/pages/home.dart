@@ -1,3 +1,5 @@
+import 'dart:developer';
+import 'dart:math';
 import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
 import 'package:Ponto_Riobranco/pages/NavigationBar/notifications_bar.dart';
 import 'package:Ponto_Riobranco/pages/NavigationBar/point_bar.dart';
@@ -17,18 +19,11 @@ class Home extends StatefulWidget {
 
 class _Home extends State<Home> {
   int _indexNavigation = 0;
-  int emoticons = 0;
   String home = "home";
-  String ponto = "Ponto";
+  String point = "Ponto";
   String perfil = "Perfil";
-  String notificacoes = "Notificações";
-  //
-  getEmotion(emoticons) async {
-    setState(() {
-      this.emoticons = emoticons;
-      employ_global.emoticons = emoticons;
-    });
-  }
+  String opcoes = "Opções";
+
   final pages = [
     HomeBar(),
     PointBar(),
@@ -52,28 +47,38 @@ class _Home extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indexNavigation,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xDDE7E7E7),
-        iconSize: 25,
+        backgroundColor: Color(0xff09a7ff),
+        iconSize: 30,
         selectedFontSize: 16,
+        selectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                // color: Colors.white,
+              ),
+              label: home,
+              backgroundColor: Colors.black),
+          BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
-              color: Colors.blue,
+              Icons.camera_alt,
+              // color: Colors.black
             ),
-            label: home,
+            label: point,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt_outlined, color: Colors.blue),
-            label:  ponto,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outlined, color: Colors.blue),
+            icon: Icon(
+              Icons.person,
+              // color: Colors.black
+            ),
             label: perfil,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_active_outlined, color: Colors.blue),
-            label: notificacoes,
+            icon: Icon(
+              Icons.menu_open_rounded,
+              // color: Colors.black
+            ),
+            label: opcoes,
           ),
         ],
         onTap: (index) {

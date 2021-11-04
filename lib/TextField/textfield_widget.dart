@@ -1,3 +1,4 @@
+import 'package:Ponto_Riobranco/SplashScreen/style.dart';
 import 'package:Ponto_Riobranco/ui/shared/globals.dart';
 import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
 import 'package:flutter/material.dart';
@@ -29,16 +30,16 @@ class TextFieldWidget extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscureText,
       style: TextStyle(
-        color: Global.mediumBlue,
-        fontSize: 14.0,
+        color: Color(0xff09a7ff),
+        fontSize: 18.0,
       ),
-      cursorColor: Global.mediumBlue,
+      cursorColor: Color(0xff09a7ff),
       decoration: InputDecoration(
         labelText: hintText,
         prefixIcon: Icon(
           prefixIconData,
-          size: 25,
-          color: Global.mediumBlue,
+          size: 28,
+          color: Color(0xff09a7ff),
         ),
         filled: true,
         enabledBorder: UnderlineInputBorder(
@@ -47,7 +48,7 @@ class TextFieldWidget extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Global.mediumBlue),
+          borderSide: BorderSide(color: Color(0xff09a7ff)),
         ),
         suffixIcon: GestureDetector(
           onTap: () {
@@ -55,11 +56,14 @@ class TextFieldWidget extends StatelessWidget {
           },
           child: Icon(
             suffixIconData,
-            size: 18,
-            color: Global.mediumBlue,
+            size: 22,
+            color: Color(0xff09a7ff),
           ),
         ),
-        labelStyle: TextStyle(color: Global.mediumBlue),
+        labelStyle: TextStyle(
+          color: Color(0xff09a7ff),
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

@@ -23,6 +23,7 @@ class PontoMain extends StatelessWidget{
         '/login':(context) => ChangeNotifierProvider(create: (context) => LoginModel(), child: MaterialApp(home: Login(),),),
         '/home':(context) => Home(),
         'homebar':(context) => HomeBar(),
+
       }
     );
   }
