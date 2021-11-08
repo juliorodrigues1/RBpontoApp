@@ -36,6 +36,7 @@ class _ProfileState extends State<Profile> {
     });
   }
 
+
   void initState() {
     getinfo();
     super.initState();
@@ -50,7 +51,7 @@ class _ProfileState extends State<Profile> {
           bottomLeft: Radius.circular(35),
           bottomRight: Radius.circular(35),
         )),
-        backgroundColor: Color(0xff09a7ff),
+        backgroundColor: Color(0xff38c172),
         centerTitle: true,
         flexibleSpace: Container(
           child: Center(
@@ -83,6 +84,7 @@ class _ProfileState extends State<Profile> {
           ),
         ),
         SizedBox(height: 10),
+
         SizedBox(height: 20),
         Card(
           child: Text(

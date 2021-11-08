@@ -37,7 +37,7 @@ class _HomeBar extends State<HomeBar> {
   }
 
   Future<Map> listWorkDay() async {
-    var url = Uri.http(PreferencesKeys.apiURL, "/api/employ/workday");
+    var url = Uri.http(PreferencesKeys.apihomologa, "/api/employ/workday");
     // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
     var response = await http.post(url, body: {
       'employ_id': employ_global.employ_id,
@@ -56,38 +56,20 @@ class _HomeBar extends State<HomeBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(200),
-          child: AppBar(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(35),
-                  bottomRight: Radius.circular(35),
-                )),
-            backgroundColor: Color(0xff09a7ff),
-            centerTitle: true,
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/pmrb.png'), scale: 3)),
-            ),
-          ),
-        ),
-      // NestedScrollView(
-        // headerSliverBuilder: (context, condition) {
-        //   return <Widget>[
-        //     SliverAppBar(
-        //       expandedHeight: 200,
-        //       backgroundColor: Color(0xff09a7ff),
-        //       flexibleSpace: FlexibleSpaceBar(
-        //         centerTitle: true,
-        //         background: Image.asset("assets/pmrb.png",
-        //         ),
-        //       ),
-        //     )
-        //   ];
-        // },
+    return NestedScrollView(
+        headerSliverBuilder: (context, condition) {
+          return <Widget>[
+            SliverAppBar(
+              expandedHeight: 200,
+              backgroundColor: Color(0xff09a7ff),
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: true,
+                background: Image.asset("assets/pmrb.png",
+                ),
+              ),
+            )
+          ];
+        },
         body: Container(
             child: Column(
           children: [
@@ -96,8 +78,7 @@ class _HomeBar extends State<HomeBar> {
               child: _itemBuilder(context, 1),
             ),
           ],
-        ))
-    );
+        )));
   }
 
   Widget _itemBuilder(BuildContext context, int index) {

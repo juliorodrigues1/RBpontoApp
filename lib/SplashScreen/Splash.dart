@@ -82,14 +82,14 @@ class _SplashState extends State<Splash> {
                     Align(
                       alignment: Alignment.center,
                       child: Image.asset(
-                        "assets/icons/iconePonto.png",
+                        "assets/logo-amac.png",
                         height: 200.0,
                       ),
                     ),
                     SizedBox(
                       height: 30.0,
                     ),
-                    SpinKitDualRing(color: Colors.blue),
+                    SpinKitDualRing(color: Colors.green),
                   ],
                 ),
               ],

@@ -30,16 +30,16 @@ class TextFieldWidget extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscureText,
       style: TextStyle(
-        color: Color(0xff09a7ff),
+        color: Color(0xff38c172),
         fontSize: 18.0,
       ),
-      cursorColor: Color(0xff09a7ff),
+      cursorColor: Color(0xff38c172),
       decoration: InputDecoration(
         labelText: hintText,
         prefixIcon: Icon(
           prefixIconData,
           size: 28,
-          color: Color(0xff09a7ff),
+          color: Color(0xff38c172),
         ),
         filled: true,
         enabledBorder: UnderlineInputBorder(
@@ -48,7 +48,7 @@ class TextFieldWidget extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Color(0xff09a7ff)),
+          borderSide: BorderSide(color: Color(0xff38c172)),
         ),
         suffixIcon: GestureDetector(
           onTap: () {
@@ -57,11 +57,11 @@ class TextFieldWidget extends StatelessWidget {
           child: Icon(
             suffixIconData,
             size: 22,
-            color: Color(0xff09a7ff),
+            color: Color(0xff38c172),
           ),
         ),
         labelStyle: TextStyle(
-          color: Color(0xff09a7ff),
+          color: Color(0xff38c172),
           fontWeight: FontWeight.bold,
         ),
       ),

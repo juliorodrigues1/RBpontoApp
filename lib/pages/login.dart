@@ -94,7 +94,7 @@ class _Login extends State<Login> {
                 children: <Widget>[
                   CircularProgressIndicator(
                     strokeWidth: 5,
-                    backgroundColor: Colors.cyanAccent,
+                    backgroundColor: Colors.green,
                     valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
                   ),
                   SizedBox(height: 20),
@@ -128,7 +128,7 @@ class _Login extends State<Login> {
             padding: EdgeInsets.symmetric(vertical: 200),
             // width: double.infinity,
             height: size.height - 200,
-            color:Color(0xff09a7ff),
+            color:Color(0xff38c172),
           ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 1000),
@@ -187,7 +187,7 @@ class _Login extends State<Login> {
                 ),
                 FloatingActionButton.extended(
                   onPressed: up,
-                  backgroundColor: Color(0xff09a7ff),
+                  backgroundColor: Color(0xff38c172),
                   label: Text('Entrar'),
                 )
               ],
