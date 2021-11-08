@@ -56,20 +56,24 @@ class _HomeBar extends State<HomeBar> {
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-        headerSliverBuilder: (context, condition) {
-          return <Widget>[
-            SliverAppBar(
-              expandedHeight: 200,
-              backgroundColor: Color(0xff09a7ff),
-              flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                background: Image.asset("assets/pmrb.png",
-                ),
-              ),
-            )
-          ];
-        },
+    return Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(200),
+          child: AppBar(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(35),
+                  bottomRight: Radius.circular(35),
+                )),
+            backgroundColor: Color(0xff38c172),
+            centerTitle: true,
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/pmrb.png'), scale: 3)),
+            ),
+          ),
+        ),
         body: Container(
             child: Column(
           children: [
