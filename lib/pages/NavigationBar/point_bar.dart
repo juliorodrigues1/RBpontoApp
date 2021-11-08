@@ -143,19 +143,36 @@ StreamSubscription subscription;
   }
 
   Widget buildView(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder: (context, condition) {
-        return <Widget>[
-          SliverAppBar(
-            expandedHeight: 200,
-            backgroundColor: Color(0xff09a7ff),
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: false,
-              background: Image.asset("assets/pmrb.png"),
-            ),
-          ),
-        ];
-      },
+    return Scaffold(appBar: PreferredSize(
+      preferredSize: Size.fromHeight(200),
+      child: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(35),
+              bottomRight: Radius.circular(35),
+            )),
+        backgroundColor: Color(0xff09a7ff),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/pmrb.png'), scale: 3)),
+        ),
+      ),
+    ),
+      // NestedScrollView(
+      // headerSliverBuilder: (context, condition) {
+      //   return <Widget>[
+      //     SliverAppBar(
+      //       expandedHeight: 200,
+      //       backgroundColor: Color(0xff09a7ff),
+      //       flexibleSpace: FlexibleSpaceBar(
+      //         centerTitle: false,
+      //         background: Image.asset("assets/pmrb.png"),
+      //       ),
+      //     ),
+      //   ];
+      // },
       body: Column(
         children: [
           SizedBox(height:20),
@@ -251,7 +268,7 @@ StreamSubscription subscription;
               color: Colors.white, ),
           ),
         ],
-      ),
+      )
     );
   }
 

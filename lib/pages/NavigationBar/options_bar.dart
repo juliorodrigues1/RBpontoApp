@@ -1,27 +1,40 @@
 import 'dart:io';
 import 'package:Ponto_Riobranco/button/button_pdf.dart';
 import 'package:Ponto_Riobranco/controller/pdf.dart';
-// import 'package:Ponto_Riobranco/pages/home.dart';
 import 'package:Ponto_Riobranco/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-// import 'package:popup_menu/popup_menu.dart';
-
 import '../pdf_viewer.dart';
 
-class Notifications extends StatefulWidget {
+class Options extends StatefulWidget {
   @override
-  _NotificationsState createState() => _NotificationsState();
+  _OptionsState createState() => _OptionsState();
 }
 
 void openPDF(BuildContext context, File file) => Navigator.of(context)
     .push(MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)));
 
-class _NotificationsState extends State<Notifications> {
+class _OptionsState extends State<Options> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(200),
+        child: AppBar(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(35),
+            bottomRight: Radius.circular(35),
+          )),
+          backgroundColor: Color(0xff09a7ff),
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/pmrb.png'), scale: 3)),
+          ),
+        ),
+      ),
       body: Container(
         child: ListView(
           children: [
@@ -38,7 +51,7 @@ class _NotificationsState extends State<Notifications> {
                     // onClicked: () async {
                     //   final url = PreferencesKeys.apidemonstrativo;
                     //   final file = await Pdf.loadNetwork(url);
-                    //   openPDF(context, file);
+                    //   openPDF(contcext, file);
                     // },
                   ),
                 ))

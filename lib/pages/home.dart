@@ -1,7 +1,6 @@
-import 'dart:developer';
-import 'dart:math';
+
 import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
-import 'package:Ponto_Riobranco/pages/NavigationBar/notifications_bar.dart';
+import 'package:Ponto_Riobranco/pages/NavigationBar/options_bar.dart';
 import 'package:Ponto_Riobranco/pages/NavigationBar/point_bar.dart';
 import 'package:Ponto_Riobranco/pages/NavigationBar/profile_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,7 +27,7 @@ class _Home extends State<Home> {
     HomeBar(),
     PointBar(),
     Profile(),
-    Notifications(),
+    Options(),
   ];
 
   @override
@@ -58,7 +57,8 @@ class _Home extends State<Home> {
                 // color: Colors.white,
               ),
               label: home,
-              backgroundColor: Colors.black),
+              // backgroundColor: Colors.black
+          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.camera_alt,
