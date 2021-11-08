@@ -12,7 +12,6 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-
   ProfileModel profileModel;
 
   Future fetchPost() async {
@@ -25,55 +24,65 @@ class _ProfileState extends State<Profile> {
       Map<String, dynamic> mapProfile = json.decode(response.body);
       print(mapProfile.toString());
       return mapProfile;
-    }catch(ex) {
+    } catch (ex) {
       return ex;
     }
   }
 
-  void  getinfo() async {
+  void getinfo() async {
     Map mapProfile = await fetchPost();
     setState(() {
       this.profileModel = ProfileModel.fromJson(mapProfile);
     });
   }
 
-
   void initState() {
     getinfo();
     super.initState();
   }
-  Widget _cabProfile(BuildContext context, int index){
-    return Container(
-      height: 150,
-      color: Color(0xff09a7ff),
-      child: Center(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child:
-              'http://' + this.profileModel.image != null ?
-            Image.network(
-               'http://' + this.profileModel.image, width: 100,
-          )
-          : Text('erro')
+
+  Widget _cabProfile(BuildContext context, int index) {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(200),
+      child: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(35),
+          bottomRight: Radius.circular(35),
+        )),
+        backgroundColor: Color(0xff09a7ff),
+        centerTitle: true,
+        flexibleSpace: Container(
+          child: Center(
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: 'http://' + this.profileModel.image != null
+                    ? Image.network(
+                        'http://' + this.profileModel.image,
+                        width: 100,
+                      )
+                    : Text('erro')),
+          ),
+
         ),
       ),
     );
+
   }
 
   Widget _listProfile(BuildContext context, int index) {
-    return ListBody(
+    return ListView(
       children: <Widget>[
         SizedBox(height: 10),
         Card(
           child: Center(
             child: Text(
               this.profileModel.name,
-              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
         ),
         SizedBox(height: 10),
-
         SizedBox(height: 20),
         Card(
           child: Text(
@@ -105,19 +114,12 @@ class _ProfileState extends State<Profile> {
       ],
     );
   }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-        children: <Widget>[
-          Container(
-            child: _cabProfile(context,1),
-          ),
-          Card(
-            child: _listProfile(context, 1),
-          ),
-
-        ],
-      );
-
+    return Scaffold(
+      appBar: _cabProfile(context, 1),
+      body: _listProfile(context, 1),
+    );
   }
 }
