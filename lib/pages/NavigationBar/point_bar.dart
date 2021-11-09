@@ -65,57 +65,58 @@ class _PointBar extends State<PointBar> {
   Future getImage() async {
     if (employ_global.emoticons == 0) {
       return showAlertDialog1(context);
-    }
-    setState(() {
-      _isInAsyncCall = true;
-    });
+    }else {
+      setState(() {
+        _isInAsyncCall = true;
+      });
 
-    final image = await imagePicker.getImage(
+      final image = await imagePicker.getImage(
         source: ImageSource.camera, maxWidth: 480, maxHeight: 640,
-        preferredCameraDevice:CameraDevice.front,
-    );
-    if (this.mounted) {
-      setState(() {
-        _image = File(image.path);
-        uploadimage = File(image.path);
-      });
-    }else{
-      return showAlertDialog1(context);
-    }
+        preferredCameraDevice: CameraDevice.front,
+      );
+      if (this.mounted) {
+        setState(() {
+          _image = File(image.path);
+          uploadimage = File(image.path);
+        });
+      } else {
+        return showAlertDialog1(context);
+      }
 
-    var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
-    // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
-    List<int> imageBytes = uploadimage.readAsBytesSync();
-    await this.getCurrentLocation();
-    var response = await http.post(url, body: {
-      'employ_id': employ_global.employ_id,
-      'latitude': latitudeData,
-      'longitude': longitudeData,
-      'image_photo': base64Encode(imageBytes),
-      'mood_day': employ_global.emoticons.toString(),
-    });
-
-    if (response.statusCode == 200) {
-      log(response.body);
-      setState(() {
-        _isInAsyncCall = false;
+      var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
+      // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
+      List<int> imageBytes = uploadimage.readAsBytesSync();
+      await this.getCurrentLocation();
+      var response = await http.post(url, body: {
+        'employ_id': employ_global.employ_id,
+        'latitude': latitudeData,
+        'longitude': longitudeData,
+        'image_photo': base64Encode(imageBytes),
+        'mood_day': employ_global.emoticons.toString(),
       });
-      if (jsonDecode(response.body)['sucess'].hashCode.toString() != '2011') {
-        //2011 valor padrão para null
-        showAlertDialogSucess(context);
+
+      if (response.statusCode == 200) {
+        log(response.body);
+        setState(() {
+          _isInAsyncCall = false;
+        });
+        if (jsonDecode(response.body)['sucess'].hashCode.toString() != '2011') {
+          //2011 valor padrão para null
+          showAlertDialogSucess(context);
+        } else {
+          setState(() {
+            error_message = jsonDecode(response.body)['error'].toString();
+          });
+          showAlertDialogError(context);
+        }
       } else {
         setState(() {
-          error_message = jsonDecode(response.body)['error'].toString();
+          error_message =
+          // 'Ops, algo de errado aconteceu, entrar em contato com suporte.';
+          'Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !';
         });
         showAlertDialogError(context);
       }
-    } else {
-      setState(() {
-        error_message =
-            // 'Ops, algo de errado aconteceu, entrar em contato com suporte.';
-        'Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !';
-      });
-      showAlertDialogError(context);
     }
   }
 
