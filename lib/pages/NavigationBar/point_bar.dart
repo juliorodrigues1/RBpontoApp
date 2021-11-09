@@ -393,14 +393,14 @@ StreamSubscription subscription;
         child: Text("OK"),
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('dialog');
-          Navigator.pop(context);
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      PointBar(
-                          // employID: employ_global.employ_id
-                      )));
+          // Navigator.pop(context);
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //         builder: (context) =>
+          //             PointBar(
+          //                 // employID: employ_global.employ_id
+          //             )));
         });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
