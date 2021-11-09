@@ -1,6 +1,5 @@
 
 import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
-import 'package:Ponto_Riobranco/pages/NavigationBar/point_bar.dart';
 import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +13,11 @@ import 'pages/home.dart';
 void main() => runApp(PontoMain());
 class PontoMain extends StatelessWidget{
   final appTitle = 'Ponto RB';
+
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+    debugShowCheckedModeBanner: false,
       title: appTitle,
       initialRoute: '/Splash',
       routes: {
@@ -25,6 +26,7 @@ class PontoMain extends StatelessWidget{
         '/home':(context) => Home(),
         'homebar':(context) => HomeBar(),
       }
+
     );
   }
 }

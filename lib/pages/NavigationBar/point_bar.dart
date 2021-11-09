@@ -160,7 +160,7 @@ class _PointBar extends State<PointBar> {
         flexibleSpace: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/pmrb.png'), scale: 3)),
+                  image: AssetImage('assets/pmrb.png'), scale: 2)),
         ),
       ),
     ),
