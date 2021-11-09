@@ -23,10 +23,7 @@ class ButtonWidget extends StatelessWidget {
           style: TextStyle(
               fontSize: 15,
               color: Colors.black,
-
-
           ),
         ),
-
       );
 }

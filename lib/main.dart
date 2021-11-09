@@ -1,5 +1,6 @@
 
 import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
+import 'package:Ponto_Riobranco/pages/NavigationBar/point_bar.dart';
 import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,6 @@ class PontoMain extends StatelessWidget{
         '/login':(context) => ChangeNotifierProvider(create: (context) => LoginModel(), child: MaterialApp(home: Login(),),),
         '/home':(context) => Home(),
         'homebar':(context) => HomeBar(),
-
       }
     );
   }
