@@ -37,7 +37,7 @@ class _HomeBar extends State<HomeBar> {
   }
 
   Future<Map> listWorkDay() async {
-    var url = Uri.http(PreferencesKeys.apiURL, "/api/employ/workday");
+    var url = Uri.http(PreferencesKeys.apihomologa, "/api/employ/workday");
     // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
     var response = await http.post(url, body: {
       'employ_id': employ_global.employ_id,
@@ -65,7 +65,7 @@ class _HomeBar extends State<HomeBar> {
                   bottomLeft: Radius.circular(35),
                   bottomRight: Radius.circular(35),
                 )),
-            backgroundColor: Color(0xff09a7ff),
+            backgroundColor: Color(0xff38c172),
             centerTitle: true,
             flexibleSpace: Container(
               decoration: BoxDecoration(
@@ -74,20 +74,6 @@ class _HomeBar extends State<HomeBar> {
             ),
           ),
         ),
-      // NestedScrollView(
-        // headerSliverBuilder: (context, condition) {
-        //   return <Widget>[
-        //     SliverAppBar(
-        //       expandedHeight: 200,
-        //       backgroundColor: Color(0xff09a7ff),
-        //       flexibleSpace: FlexibleSpaceBar(
-        //         centerTitle: true,
-        //         background: Image.asset("assets/pmrb.png",
-        //         ),
-        //       ),
-        //     )
-        //   ];
-        // },
         body: Container(
             child: Column(
           children: [
@@ -96,8 +82,7 @@ class _HomeBar extends State<HomeBar> {
               child: _itemBuilder(context, 1),
             ),
           ],
-        ))
-    );
+        )));
   }
 
   Widget _itemBuilder(BuildContext context, int index) {

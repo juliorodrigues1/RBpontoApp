@@ -65,7 +65,18 @@ class _PointBar extends State<PointBar> {
   Future getImage() async {
     if (employ_global.emoticons == 0) {
       return showAlertDialog1(context);
+
     }else {
+    }
+    setState(() {
+      _isInAsyncCall = true;
+    });
+
+    final image = await imagePicker.pickImage(
+        source: ImageSource.camera, preferredCameraDevice:CameraDevice.front, maxWidth: 480, maxHeight: 640,
+
+    );
+    if (this.mounted) {
       setState(() {
         _isInAsyncCall = true;
       });
@@ -155,7 +166,7 @@ class _PointBar extends State<PointBar> {
               bottomLeft: Radius.circular(35),
               bottomRight: Radius.circular(35),
             )),
-        backgroundColor: Color(0xff09a7ff),
+        backgroundColor: Color(0xff38c172),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -266,7 +277,7 @@ class _PointBar extends State<PointBar> {
 
           FloatingActionButton(
             onPressed: getImage,
-            backgroundColor: Color(0xff09a7ff),
+            backgroundColor: Color(0xff38c172),
             // Colors.white,
             child: Icon(Icons.camera_alt,
               color: Colors.white, ),

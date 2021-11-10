@@ -26,7 +26,7 @@ class _OptionsState extends State<Options> {
             bottomLeft: Radius.circular(35),
             bottomRight: Radius.circular(35),
           )),
-          backgroundColor: Color(0xff09a7ff),
+          backgroundColor: Color(0xff38c172),
           centerTitle: true,
           flexibleSpace: Container(
             decoration: BoxDecoration(

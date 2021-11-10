@@ -12,6 +12,7 @@ import 'pages/home.dart';
 
 void main() => runApp(PontoMain());
 class PontoMain extends StatelessWidget{
+
   final appTitle = 'Ponto RB';
 
   @override

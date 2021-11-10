@@ -46,7 +46,7 @@ class _Home extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indexNavigation,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xff09a7ff),
+        backgroundColor: Color(0xff38c172),
         iconSize: 30,
         selectedFontSize: 16,
         selectedItemColor: Colors.white,
