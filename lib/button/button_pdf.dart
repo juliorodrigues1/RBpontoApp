@@ -11,20 +11,19 @@ class ButtonWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          // onPrimary: Color(0xFF000000),
-          // primary:  Color(0xFF000000) ,
-          minimumSize: Size.fromRadius(5),
-        ),
-        child: Text(text,
-            style: TextStyle(
-                fontSize: 15,
-                color: Colors.black,
-
-
-            )
+  Widget build(BuildContext context) => OutlinedButton.icon(
+        icon: Icon(Icons.list),
+        style: OutlinedButton.styleFrom(
+          primary: Color(0xFF000000),
+          minimumSize: Size.fromRadius(24),
+          side: BorderSide(color: Color(0xff09a7ff))
         ),
         onPressed: onClicked,
+        label: Text(text,
+          style: TextStyle(
+              fontSize: 15,
+              color: Colors.black,
+          ),
+        ),
       );
 }

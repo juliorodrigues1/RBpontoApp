@@ -12,10 +12,13 @@ import 'pages/home.dart';
 
 void main() => runApp(PontoMain());
 class PontoMain extends StatelessWidget{
-  final appTitle = 'RB Ponnto';
+
+  final appTitle = 'Ponto RB';
+
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+    debugShowCheckedModeBanner: false,
       title: appTitle,
       initialRoute: '/Splash',
       routes: {
@@ -23,8 +26,8 @@ class PontoMain extends StatelessWidget{
         '/login':(context) => ChangeNotifierProvider(create: (context) => LoginModel(), child: MaterialApp(home: Login(),),),
         '/home':(context) => Home(),
         'homebar':(context) => HomeBar(),
-
       }
+
     );
   }
 }
