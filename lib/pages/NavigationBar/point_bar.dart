@@ -408,7 +408,6 @@ class _PointBar extends State<PointBar> {
         child: Text("Fechar"),
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('dialog');
-          //Botao de ação sem redirecionar, pois a tela já está careegada
         });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
