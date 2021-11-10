@@ -1,6 +1,6 @@
-import 'package:Ponto_Riobranco/SplashScreen/style.dart';
-import 'package:Ponto_Riobranco/ui/shared/globals.dart';
-import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
+import 'package:RBPONTOAMAC/SplashScreen/style.dart';
+import 'package:RBPONTOAMAC/ui/shared/globals.dart';
+import 'package:RBPONTOAMAC/viewmodels/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

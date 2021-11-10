@@ -1,11 +1,11 @@
 
-import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
-import 'package:Ponto_Riobranco/pages/NavigationBar/options_bar.dart';
-import 'package:Ponto_Riobranco/pages/NavigationBar/point_bar.dart';
-import 'package:Ponto_Riobranco/pages/NavigationBar/profile_bar.dart';
+import 'package:RBPONTOAMAC/pages/NavigationBar/home_bar.dart';
+import 'package:RBPONTOAMAC/pages/NavigationBar/options_bar.dart';
+import 'package:RBPONTOAMAC/pages/NavigationBar/point_bar.dart';
+import 'package:RBPONTOAMAC/pages/NavigationBar/profile_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
+import 'package:RBPONTOAMAC/model/employ.dart' as employ_global;
 
 class Home extends StatefulWidget {
   String employID;

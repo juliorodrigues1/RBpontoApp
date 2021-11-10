@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:Ponto_Riobranco/model/workDay.dart';
-import 'package:Ponto_Riobranco/values/preferences_keys.dart';
+import 'package:RBPONTOAMAC/model/workDay.dart';
+import 'package:RBPONTOAMAC/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Ponto_Riobranco/global/variables.dart' as variables_global;
-import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
+import 'package:RBPONTOAMAC/global/variables.dart' as variables_global;
+import 'package:RBPONTOAMAC/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -70,7 +70,7 @@ class _HomeBar extends State<HomeBar> {
             flexibleSpace: Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/pmrb.png'), scale: 2)),
+                      image: AssetImage('assets/logo-amac.png'), scale: 2)),
             ),
           ),
         ),

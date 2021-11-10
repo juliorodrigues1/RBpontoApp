@@ -1,4 +1,4 @@
-package com.riobranco.ac.Ponto_Riobranco
+package br.com.amac
 
 import io.flutter.embedding.android.FlutterActivity
 

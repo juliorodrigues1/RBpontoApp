@@ -27,7 +27,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:Ponto_Riobranco/values/preferences_keys.dart';
+import 'package:RBPONTOAMAC/values/preferences_keys.dart';
 
 class Download {
   static var httpClient = new HttpClient();

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.riobranco.ac.Ponto_Riobranco">
+    package="br.com.amac">
 
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as Math;
-import 'package:Ponto_Riobranco/viewmodels/clipper_widget.dart';
+import 'package:RBPONTOAMAC/viewmodels/clipper_widget.dart';
 class WaveWidget extends StatefulWidget {
   final Size size;
   final double yOffset;

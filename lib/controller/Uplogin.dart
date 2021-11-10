@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:Ponto_Riobranco/model/user.dart';
-import 'package:Ponto_Riobranco/pages/home.dart';
-import 'package:Ponto_Riobranco/values/preferences_keys.dart';
+import 'package:RBPONTOAMAC/model/user.dart';
+import 'package:RBPONTOAMAC/pages/home.dart';
+import 'package:RBPONTOAMAC/values/preferences_keys.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,7 +31,7 @@ class Uplogin {
   Future Login(_login, _password, context) async {
     try {
 
-      var url = Uri.http(PreferencesKeys.apiURL, '/api/login');
+      var url = Uri.http(PreferencesKeys.apihomologa, '/api/login');
       // var url = Uri.http(PreferencesKeys.apihomologa, '/api/login');
       var response = await http
           .post(url, body: {'email': this._login, 'password': this._password});

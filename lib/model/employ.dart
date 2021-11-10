@@ -1,6 +1,6 @@
 library my_prj.employ;
 
-import 'package:Ponto_Riobranco/model/workDay.dart';
+import 'package:RBPONTOAMAC/model/workDay.dart';
 
 String employ_id = '';
 int emoticons = 0;

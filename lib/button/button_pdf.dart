@@ -16,7 +16,7 @@ class ButtonWidget extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           primary: Color(0xFF000000),
           minimumSize: Size.fromRadius(24),
-          side: BorderSide(color: Color(0xff09a7ff))
+          side: BorderSide(color: Color(0xff38c172))
         ),
         onPressed: onClicked,
         label: Text(text,

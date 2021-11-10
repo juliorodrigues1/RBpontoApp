@@ -2,14 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:Ponto_Riobranco/pages/home.dart';
-import 'package:Ponto_Riobranco/values/preferences_keys.dart';
+import 'package:RBPONTOAMAC/pages/home.dart';
+import 'package:RBPONTOAMAC/values/preferences_keys.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
+import 'package:RBPONTOAMAC/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
 
 class PointBar extends StatefulWidget {
@@ -94,7 +94,7 @@ class _PointBar extends State<PointBar> {
         return showAlertDialog1(context);
       }
 
-      var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
+      var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
       // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
       List<int> imageBytes = uploadimage.readAsBytesSync();
       await this.getCurrentLocation();
@@ -171,7 +171,7 @@ class _PointBar extends State<PointBar> {
         flexibleSpace: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/pmrb.png'), scale: 2)),
+                  image: AssetImage('assets/logo-amac.png'), scale: 2)),
         ),
       ),
     ),

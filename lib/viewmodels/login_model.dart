@@ -1,4 +1,4 @@
-import 'package:Ponto_Riobranco/ui/shared/globals.dart';
+import 'package:RBPONTOAMAC/ui/shared/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

@@ -1,18 +1,18 @@
 import 'dart:convert';
-import 'package:Ponto_Riobranco/TextField/textfield_widget.dart';
-import 'package:Ponto_Riobranco/controller/Uplogin.dart';
-import 'package:Ponto_Riobranco/model/user.dart';
-import 'package:Ponto_Riobranco/ui/shared/globals.dart';
-import 'package:Ponto_Riobranco/values/preferences_keys.dart';
-import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
-import 'package:Ponto_Riobranco/viewmodels/wave_widget.dart';
+import 'package:RBPONTOAMAC/TextField/textfield_widget.dart';
+import 'package:RBPONTOAMAC/controller/Uplogin.dart';
+import 'package:RBPONTOAMAC/model/user.dart';
+import 'package:RBPONTOAMAC/ui/shared/globals.dart';
+import 'package:RBPONTOAMAC/values/preferences_keys.dart';
+import 'package:RBPONTOAMAC/viewmodels/login_model.dart';
+import 'package:RBPONTOAMAC/viewmodels/wave_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:provider/provider.dart';
-import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
-import 'package:Ponto_Riobranco/global/variables.dart' as variables_global;
+import 'package:RBPONTOAMAC/model/employ.dart' as employ_global;
+import 'package:RBPONTOAMAC/global/variables.dart' as variables_global;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -146,8 +146,9 @@ class _Login extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
-                  'assets/branca.png',
-                  width: 200,
+                  'assets/logo-amac.png',
+                  width: 300,
+                  height: 300,
                 ),
               ],
             ),
@@ -159,7 +160,7 @@ class _Login extends State<Login> {
               children: <Widget>[
                 TextFieldWidget(
                   controller: loginInputController,
-                  hintText: 'Usuário',
+                  hintText: 'CPF',
                   obscureText: false,
                   prefixIconData: Icons.account_circle_outlined,
                   suffixIconData: model.isValid ? Icons.check : null,

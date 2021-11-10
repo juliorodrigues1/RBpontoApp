@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:Ponto_Riobranco/button/button_pdf.dart';
-import 'package:Ponto_Riobranco/controller/pdf.dart';
-import 'package:Ponto_Riobranco/values/preferences_keys.dart';
+import 'package:RBPONTOAMAC/button/button_pdf.dart';
+import 'package:RBPONTOAMAC/controller/pdf.dart';
+import 'package:RBPONTOAMAC/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../pdf_viewer.dart';
@@ -31,7 +31,7 @@ class _OptionsState extends State<Options> {
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/pmrb.png'), scale: 2)),
+                    image: AssetImage('assets/logo-amac.png'), scale: 2)),
           ),
         ),
       ),

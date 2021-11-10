@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Ponto_Riobranco/SplashScreen/style.dart' as Theme;
+import 'package:RBPONTOAMAC/SplashScreen/style.dart' as Theme;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
 

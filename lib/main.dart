@@ -1,6 +1,6 @@
 
-import 'package:Ponto_Riobranco/pages/NavigationBar/home_bar.dart';
-import 'package:Ponto_Riobranco/viewmodels/login_model.dart';
+import 'package:RBPONTOAMAC/pages/NavigationBar/home_bar.dart';
+import 'package:RBPONTOAMAC/viewmodels/login_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,7 @@ class PontoMain extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-    debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: appTitle,
       initialRoute: '/Splash',
       routes: {
