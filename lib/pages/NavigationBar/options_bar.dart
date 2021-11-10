@@ -31,7 +31,7 @@ class _OptionsState extends State<Options> {
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/pmrb.png'), scale: 3)),
+                    image: AssetImage('assets/pmrb.png'), scale: 2)),
           ),
         ),
       ),
@@ -39,7 +39,7 @@ class _OptionsState extends State<Options> {
         child: ListView(
           children: [
             Card(
-                margin: EdgeInsets.fromLTRB(50, 50, 50, 50),
+                margin: EdgeInsets.fromLTRB(50, 30, 50, 50),
                 child: InkWell(
                   onTap: () async {
                     final url = PreferencesKeys.apidemonstrativo;
@@ -48,11 +48,11 @@ class _OptionsState extends State<Options> {
                   },
                   child: ButtonWidget(
                     text: 'Gerar Demonstrativo',
-                    // onClicked: () async {
-                    //   final url = PreferencesKeys.apidemonstrativo;
-                    //   final file = await Pdf.loadNetwork(url);
-                    //   openPDF(contcext, file);
-                    // },
+                    onClicked: () async {
+                      final url = PreferencesKeys.apidemonstrativo;
+                      final file = await Pdf.loadNetwork(url);
+                      openPDF(context, file);
+                    },
                   ),
                 ))
           ],

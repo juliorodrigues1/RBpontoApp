@@ -13,6 +13,9 @@ import 'package:Ponto_Riobranco/model/employ.dart' as employ_global;
 import 'package:http/http.dart' as http;
 
 class PointBar extends StatefulWidget {
+  String employID;
+
+  PointBar({this.employID});
 
   @override
   _PointBar createState() => _PointBar();
@@ -30,7 +33,7 @@ class _PointBar extends State<PointBar> {
   int emoticons;
 
   bool _isInAsyncCall = false;
-StreamSubscription subscription;
+  StreamSubscription subscription;
 
   @override
   void initState() {
@@ -62,6 +65,8 @@ StreamSubscription subscription;
   Future getImage() async {
     if (employ_global.emoticons == 0) {
       return showAlertDialog1(context);
+
+    }else {
     }
     setState(() {
       _isInAsyncCall = true;
@@ -73,46 +78,56 @@ StreamSubscription subscription;
     );
     if (this.mounted) {
       setState(() {
-        _image = File(image.path);
-        uploadimage = File(image.path);
+        _isInAsyncCall = true;
       });
-    }else{
-      return showAlertDialog1(context);
-    }
 
-    // var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
-    var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
-    List<int> imageBytes = uploadimage.readAsBytesSync();
-    await this.getCurrentLocation();
-    var response = await http.post(url, body: {
-      'employ_id': employ_global.employ_id,
-      'latitude': latitudeData,
-      'longitude': longitudeData,
-      'image_photo': base64Encode(imageBytes),
-      'mood_day': employ_global.emoticons.toString(),
-    });
+      final image = await imagePicker.getImage(
+        source: ImageSource.camera, maxWidth: 480, maxHeight: 640,
+        preferredCameraDevice: CameraDevice.front,
+      );
+      if (this.mounted) {
+        setState(() {
+          _image = File(image.path);
+          uploadimage = File(image.path);
+        });
+      } else {
+        return showAlertDialog1(context);
+      }
 
-    if (response.statusCode == 200) {
-      log(response.body);
-      setState(() {
-        _isInAsyncCall = false;
+      var url = Uri.http(PreferencesKeys.apiURL, "/api/validation/workload");
+      // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
+      List<int> imageBytes = uploadimage.readAsBytesSync();
+      await this.getCurrentLocation();
+      var response = await http.post(url, body: {
+        'employ_id': employ_global.employ_id,
+        'latitude': latitudeData,
+        'longitude': longitudeData,
+        'image_photo': base64Encode(imageBytes),
+        'mood_day': employ_global.emoticons.toString(),
       });
-      if (jsonDecode(response.body)['sucess'].hashCode.toString() != '2011') {
-        //2011 valor padrão para null
-        showAlertDialogSucess(context);
+
+      if (response.statusCode == 200) {
+        log(response.body);
+        setState(() {
+          _isInAsyncCall = false;
+        });
+        if (jsonDecode(response.body)['sucess'].hashCode.toString() != '2011') {
+          //2011 valor padrão para null
+          showAlertDialogSucess(context);
+        } else {
+          setState(() {
+            error_message = jsonDecode(response.body)['error'].toString();
+          });
+          showAlertDialogError(context);
+        }
       } else {
         setState(() {
-          error_message = jsonDecode(response.body)['error'].toString();
+          error_message =
+          // 'Ops, algo de errado aconteceu, entrar em contato com suporte.';
+          'Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !';
         });
         showAlertDialogError(context);
       }
-    } else {
-      setState(() {
-        error_message =
-            // 'Ops, algo de errado aconteceu, entrar em contato com suporte.';
-        'Por favor tente novamente, letidão na conexão pode estar influenciando no envio dos dados parar autenticação !';
-      });
-      showAlertDialogError(context);
     }
   }
 
@@ -156,7 +171,7 @@ StreamSubscription subscription;
         flexibleSpace: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/pmrb.png'), scale: 3)),
+                  image: AssetImage('assets/pmrb.png'), scale: 2)),
         ),
       ),
     ),
@@ -203,7 +218,7 @@ StreamSubscription subscription;
               ),
               FloatingActionButton(
 
-                 onPressed: () => _getEmotion(2),
+                onPressed: () => _getEmotion(2),
                 heroTag: 'button2',
                 backgroundColor: Colors.blue,
                 splashColor: Colors.white,
@@ -330,7 +345,7 @@ StreamSubscription subscription;
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      PointBar()
+                      PointBar(employID: employ_global.employ_id)
                       // Home(employID: employ_global.employ_id)
                 //ADICIONAR NOVA ROTA
               ));
@@ -390,17 +405,9 @@ StreamSubscription subscription;
     // configura o button
     // ignore: deprecated_member_use
     Widget okButton = TextButton(
-        child: Text("OK"),
+        child: Text("Fechar"),
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('dialog');
-          // Navigator.pop(context);
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) =>
-          //             PointBar(
-          //                 // employID: employ_global.employ_id
-          //             )));
         });
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
