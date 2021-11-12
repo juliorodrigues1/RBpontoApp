@@ -1,3 +1,4 @@
+import 'package:RBPONTOAMAC/controller/Conection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:RBPONTOAMAC/SplashScreen/style.dart' as Theme;
@@ -15,6 +16,8 @@ class _SplashState extends State<Splash> {
     // TODO: implement initState
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    Conexao().internet(context);
+
     Timer(Duration(seconds: 5), () {
       Navigator.pop(context);
       Navigator.pushNamed(context, '/login');

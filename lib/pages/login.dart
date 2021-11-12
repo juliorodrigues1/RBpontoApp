@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:RBPONTOAMAC/TextField/textfield_widget.dart';
+import 'package:RBPONTOAMAC/controller/Conection.dart';
 import 'package:RBPONTOAMAC/controller/Uplogin.dart';
 import 'package:RBPONTOAMAC/model/user.dart';
 import 'package:RBPONTOAMAC/ui/shared/globals.dart';
@@ -70,7 +71,6 @@ class _Login extends State<Login> {
       showMenssage(context);
     }
   }
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -128,7 +128,7 @@ class _Login extends State<Login> {
             padding: EdgeInsets.symmetric(vertical: 200),
             // width: double.infinity,
             height: size.height - 200,
-            color:Color(0xff38c172),
+            color: Color(0xff38c172),
           ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 1000),
