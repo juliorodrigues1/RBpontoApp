@@ -1,5 +1,4 @@
-import 'package:RBPONTOAMAC/pages/NavigationBar/options_bar.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:RBPONTOAMAC/pages/point.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ class Conexao {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => Options()
+            builder: (context) => Point()
         ),
       );
     }

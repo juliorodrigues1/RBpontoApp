@@ -70,7 +70,8 @@ dependencies:
   local_auth: ^1.1.7
   # popup de menu criado em dart para ios e android
   popup_menu: ^1.0.5
-
+  #banco de dados local
+  sqflite: ^2.0.0+4
 
 
 

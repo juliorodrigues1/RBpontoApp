@@ -4,6 +4,7 @@ import 'package:RBPONTOAMAC/pages/home.dart';
 import 'package:RBPONTOAMAC/values/preferences_keys.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Uplogin {
@@ -42,11 +43,9 @@ class Uplogin {
       }
 
       String employId = jsonDecode(response.body)['user']['people']
-              ['people_employ']['employ_id']
-          .toString();
-
+              ['people_employ']['employ_id'].toString();
       if (employId != null) {
-        User user = User(user: this._login, password: this._password);
+        User user = User(user: this._login, password: this._password, employ_id: employId);
         _saveUserMemory(user);
       }
       Navigator.pop(context);
