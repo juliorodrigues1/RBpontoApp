@@ -18,6 +18,8 @@ class Point extends StatefulWidget {
 class _PointState extends State<Point> {
   String latitudeData = "";
   String longitudeData = "";
+  List work_day = [];
+
   Future<User> _getSavedUserMemory() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String jsonUser = prefs.getString(PreferencesKeys.activeUser);
@@ -52,20 +54,74 @@ class _PointState extends State<Point> {
       "point": DateTime.now().toString()
     };
     int id = await db.insert("work_days", dados);
+    if(id >= 1){
+      showAlertDialogSucess();
+    }else{
+      showAlertDialog1();
+    }
+  }
 
-    print("id salvo: $id");
-    return 0;
+  showAlertDialog1() {
+    // configura o button
+    // ignore: deprecated_member_use
+    Widget okButton = TextButton(
+        child: Text("Fechar"),
+        onPressed: () {
+          Navigator.pop(context, 'Fechar');
+        });
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("erro"),
+      content: Text("Não foi possivel registrar seu ponto"),
+      actions: [
+        okButton,
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+  }
+
+  showAlertDialogSucess() {
+    // configura o button
+    // ignore: deprecated_member_use
+    Widget okButton = TextButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.pop(context, 'OK');
+        });
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Sucesso"),
+      content: Text("Seu ponto foi registrado com sucesso"),
+      actions: [
+        okButton,
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
   }
 
   _listar() async {
     Database db = await recuperarBancoDados();
-    String sql = "SELECT * FROM work_days";
+    User user = await _getSavedUserMemory();
+    String sql = "SELECT * FROM work_days WHERE employ_id = " + user.employ_id;
     List wor_day = await db.rawQuery(sql);
-    print("Work_days: "+ wor_day.toString());
+    return wor_day;
   }
 
   @override
   Widget build(BuildContext context) {
+    _listar();
     return  Scaffold(appBar: PreferredSize(
       preferredSize: Size.fromHeight(200),
       child: AppBar(
