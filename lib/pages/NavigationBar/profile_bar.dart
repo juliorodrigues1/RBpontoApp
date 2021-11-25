@@ -16,7 +16,7 @@ class _ProfileState extends State<Profile> {
 
   Future fetchPost() async {
     try {
-      var url = Uri.http(PreferencesKeys.apiURL, '/api/employ/infomation');
+      var url = Uri.https(PreferencesKeys.apiURL, '/api/employ/infomation');
       // var url = Uri.http(PreferencesKeys.apihomologa, '/api/employ/infomation');
       var response = await http.post(url, body: {
         'employ_id': employ_global.employ_id,

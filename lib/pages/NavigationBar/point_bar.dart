@@ -72,16 +72,16 @@ class _PointBar extends State<PointBar> {
       _isInAsyncCall = true;
     });
 
-    final image = await imagePicker.pickImage(
+    /*final image = await imagePicker.pickImage(
         source: ImageSource.camera, preferredCameraDevice:CameraDevice.front, maxWidth: 480, maxHeight: 640,
 
-    );
+    );*/
     if (this.mounted) {
       setState(() {
         _isInAsyncCall = true;
       });
 
-      final image = await imagePicker.getImage(
+      final image = await imagePicker.pickImage(
         source: ImageSource.camera, maxWidth: 480, maxHeight: 640,
         preferredCameraDevice: CameraDevice.front,
       );
@@ -94,7 +94,7 @@ class _PointBar extends State<PointBar> {
         return showAlertDialog1(context);
       }
 
-      var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
+      var url = Uri.https(PreferencesKeys.apiURL, "/api/validation/workload");
       // var url = Uri.http(PreferencesKeys.apihomologa, "/api/validation/workload");
       List<int> imageBytes = uploadimage.readAsBytesSync();
       await this.getCurrentLocation();
