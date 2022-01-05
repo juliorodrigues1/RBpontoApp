@@ -1,9 +1,15 @@
+import 'dart:convert';
+import 'package:RBPONTOAMAC/values/preferences_keys.dart';
+import 'package:http/http.dart' as http;
 import 'package:RBPONTOAMAC/controller/Conection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:RBPONTOAMAC/SplashScreen/style.dart' as Theme;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:package_info/package_info.dart';
 import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class Splash extends StatefulWidget {
   @override
@@ -17,11 +23,51 @@ class _SplashState extends State<Splash> {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     Conexao().internet(context);
+    getVersion();
+    // Timer(Duration(seconds: 5), () {
+    //   Navigator.pop(context);
+    //   Navigator.pushNamed(context, '/login');
+    // });
+  }
 
-    Timer(Duration(seconds: 5), () {
+  Future getVersion() async{
+    PackageInfo _packageInfo = PackageInfo(appName: 'Unknown',
+      packageName: 'Unknown',
+      version: 'Unknown',
+      buildNumber: 'Unknown',);
+
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+    var url = Uri.http(PreferencesKeys.apihomologa, '/api/listar/versao/app');
+    var response = await http.get(url);
+    if(jsonDecode(response.body)['version'] == _packageInfo.version){
       Navigator.pop(context);
       Navigator.pushNamed(context, '/login');
-    });
+    }else{
+      showmensage('Seu aplicativo está desatualizada, clique no batão para atualizar.');
+    }
+
+
+  }
+
+  showmensage(String mensagem) {
+    return showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Aviso'),
+        content: Text(mensagem),
+        actions: [
+          TextButton(
+            onPressed: () {
+              launch('https://play.google.com/store/apps/details?id=com.riobranco.ac.Ponto_Riobranco');
+            },
+            child: const Text('Atualizar'),
+          ),
+        ],
+      ),
+    );
   }
 
   ModalRoute<dynamic> _route;

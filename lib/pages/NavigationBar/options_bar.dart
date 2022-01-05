@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:RBPONTOAMAC/button/button_pdf.dart';
 import 'package:RBPONTOAMAC/controller/pdf.dart';
+import 'package:RBPONTOAMAC/pages/abono.dart';
 import 'package:RBPONTOAMAC/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -39,7 +40,7 @@ class _OptionsState extends State<Options> {
         child: ListView(
           children: [
             Card(
-                margin: EdgeInsets.fromLTRB(50, 30, 50, 50),
+                margin: EdgeInsets.fromLTRB(50, 30, 50, 20),
                 child: InkWell(
                   onTap: () async {
                     final url = PreferencesKeys.apidemonstrativo;
@@ -54,7 +55,21 @@ class _OptionsState extends State<Options> {
                       openPDF(context, file);
                     },
                   ),
-                ))
+                )),
+            Card(
+                margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                child: InkWell(
+                  child: ButtonWidget(
+                    text: 'Solicitação de Abono Falta/Pendência',
+                    onClicked: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Abono()),
+                      );
+                    },
+                  ),
+                )
+            ),
           ],
         ),
       ),
