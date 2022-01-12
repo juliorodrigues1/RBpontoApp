@@ -47,7 +47,7 @@ Future<String> downloadFile(String url, String fileName, String dir) async {
   HttpClient httpClient = new HttpClient();
   File file;
   String filePath = 'Downloads';
-  String myUrl = PreferencesKeys.homologadesmonstrativo;
+  String myUrl = PreferencesKeys.apidemonstrativo;
 
   try {
     myUrl = url + '/' + fileName;

@@ -40,7 +40,7 @@ class _SplashState extends State<Splash> {
     setState(() {
       _packageInfo = info;
     });
-    var url = Uri.http(PreferencesKeys.apihomologa, '/api/listar/versao/app');
+    var url = Uri.http(PreferencesKeys.apiURL, '/api/listar/versao/app');
     var response = await http.get(url);
     if(jsonDecode(response.body)['version'] == _packageInfo.version){
       Navigator.pop(context);

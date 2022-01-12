@@ -25,10 +25,10 @@ class _AbonoState extends State<Abono> {
   bool load = false;
 
   Future<dynamic> getData() async {
-    // var url = Uri.https(PreferencesKeys.apiURL,
-    //     '/api/listar/abonos/' + employ_global.employ_id);
-    var url = Uri.http(PreferencesKeys.apihomologa,
+    var url = Uri.https(PreferencesKeys.apiURL,
         '/api/listar/abonos/' + employ_global.employ_id);
+    // var url = Uri.http(PreferencesKeys.apihomologa,
+    //     '/api/listar/abonos/' + employ_global.employ_id);
     var response = await http.get(url);
     setState(() {
       data = jsonDecode(response.body);
@@ -40,8 +40,8 @@ class _AbonoState extends State<Abono> {
     setState(() {
       load = true;
     });
-    // var url = Uri.https(PreferencesKeys.apiURL, '/api/solicitar/abono');
-    var url = Uri.http(PreferencesKeys.apihomologa, '/api/solicitar/abono');
+    var url = Uri.https(PreferencesKeys.apiURL, '/api/solicitar/abono');
+    // var url = Uri.http(PreferencesKeys.apihomologa, '/api/solicitar/abono');
 
     List<int> imageBytes;
     var image64Bytes;
@@ -229,7 +229,7 @@ class _AbonoState extends State<Abono> {
                                                   onPressed: () {
                                                     print(justification != '');
                                                     if (justification != '') {
-                                                      abono(data[index]['id'],
+                                                      abono(data[index+1]['id'],
                                                           justification);
                                                       Navigator.of(context)
                                                           .pop();
