@@ -72,7 +72,10 @@ dependencies:
   popup_menu: ^1.0.5
   #banco de dados local
   sqflite: ^2.0.0+4
-
+  #pegar informacoes do app
+  package_info: ^2.0.2
+  #abrir links
+  url_launcher: ^6.0.17
 
 
 dev_dependencies:
